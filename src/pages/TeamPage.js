@@ -1,61 +1,62 @@
 import React from 'react';
+import { Card, Row, Col } from 'antd';
 
 const teamMembers = [
   {
     id: 1,
     name: 'L E Chakrawarthy Sreenivas',
     role: 'President',
-    bio: 'Chakrawarthy is the President, leading the team and overseeing all activities.',
-    photo: 'https://via.placeholder.com/150' // Replace with actual photo URL
+    bio: 'As the President of the Gitam GitHub Community, Chakrawarthy leads the team with a vision for growth and innovation. He is responsible for overseeing all activities, setting strategic goals, and ensuring that the community thrives. His leadership and dedication drive the success of our initiatives.',
+    photo: 'https://via.placeholder.com/150' 
   },
   {
     id: 2,
     name: 'B Santosh',
     role: 'Vice President',
-    bio: 'Santosh supports the President and helps in managing the team.',
+    bio: 'Santosh supports the President in managing the community and its operations. He plays a crucial role in coordinating between different teams, implementing strategic plans, and ensuring smooth execution of our projects. His proactive approach and problem-solving skills are invaluable to our success.',
     photo: 'https://via.placeholder.com/150' 
   },
   {
     id: 3,
     name: 'Deeksha Dakshayini',
     role: 'Secretary',
-    bio: 'Deeksha handles documentation and internal communication.',
-    photo: 'https://via.placeholder.com/150'
+    bio: 'Deeksha handles all internal communications and documentation for the Gitam GitHub Community. She ensures that all records are maintained accurately and that communications are clear and timely. Her organizational skills help keep the team aligned and informed.',
+    photo: 'https://via.placeholder.com/150' 
   },
   {
     id: 4,
     name: 'Ram Sathya Sai',
     role: 'Tech Lead',
-    bio: 'Ram leads the technical team and manages the development process.',
+    bio: 'Ram is the Tech Lead responsible for guiding the technical team and managing the development of our projects. His expertise in technology and leadership ensures that our technical solutions are robust and innovative. Ram’s role is critical in driving the technical direction and solving complex challenges.',
     photo: 'https://via.placeholder.com/150' 
   },
   {
     id: 5,
-    name: 'Lakshmi Srujana V',
-    role: 'Inclusion Officer',
-    bio: 'Lakshmi is responsible for promoting inclusivity and ensuring diverse representation.',
+    name: 'Lakshmi Srjuana V',
+    role: 'Tech Lead',
+    bio: 'Lakshmi is dedicated to promoting inclusivity within the Gitam GitHub Community. She works to ensure diverse representation and foster an environment where all voices are heard. Her efforts help create a welcoming and supportive atmosphere for everyone involved.',
     photo: 'https://via.placeholder.com/150' 
-  }
+  },
+  
 ];
 
 function TeamPage() {
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Meet Our Team</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div style={{ padding: '30px' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Meet Our Team</h2>
+      <Row gutter={[16, 16]}>
         {teamMembers.map(member => (
-          <div key={member.id} className="border border-gray-300 rounded-lg p-6 bg-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl">
-            <img
-              src={member.photo}
-              alt={member.name}
-              className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-200 shadow-md"
-            />
-            <h3 className="text-xl font-semibold text-center text-gray-900">{member.name}</h3>
-            <p className="text-sm text-center text-gray-600">{member.role}</p>
-            <p className="mt-3 text-gray-700 text-center">{member.bio}</p>
-          </div>
+          <Col xs={24} sm={12} md={8} lg={6} key={member.id}>
+            <Card
+              hoverable
+              cover={<img alt={member.name} src={member.photo} />}
+            >
+              <Card.Meta title={member.name} description={member.role} />
+              <p style={{ marginTop: '10px' }}>{member.bio}</p>
+            </Card>
+          </Col>
         ))}
-      </div>
+      </Row>
     </div>
   );
 }
