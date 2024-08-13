@@ -43,7 +43,7 @@ const HomePage = () => {
                             backSpeed={typingSpeed} loop
                             showCursor={false}
                         />
-                        <Paragraph className="text-xl mb-6">
+                        <Paragraph className="text-2xl mb-6">
                             Join us in our mission to foster growth, collaboration, and innovation through open-source projects and community engagement.
                         </Paragraph>
                         <Button type="primary" size="large" href="/resources" className="mb-4">
