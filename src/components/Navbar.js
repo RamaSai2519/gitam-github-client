@@ -1,17 +1,34 @@
 import React from 'react';
+import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav className="bg-blue-500 p-4">
-      <ul className="flex space-x-4">
-        <li><Link className="text-white" to="/">Home</Link></li>
-        <li><Link className="text-white" to="/resources">Resources</Link></li>
-        <li><Link className="text-white" to="/team">Team</Link></li>
-        <li><Link className="text-white" to="/gallery">Gallery</Link></li>
-        <li><Link className="text-white" to="/projects">Projects</Link></li>
-        <li><Link className="text-white" to="/testimonials">Testimonials</Link></li>
-      </ul>
+    <nav style={{ backgroundColor: '#001529', padding: '0 50px' }}>
+      <Menu
+        mode="horizontal"
+        theme="dark"
+        style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'transparent', borderBottom: 'none' }}
+      >
+        <Menu.Item key="1">
+          <Link to="/">Home</Link>
+        </Menu.Item>
+        <Menu.Item key="2">
+          <Link to="/resources">Resources</Link>
+        </Menu.Item>
+        <Menu.Item key="3">
+          <Link to="/team">Team</Link>
+        </Menu.Item>
+        <Menu.Item key="4">
+          <Link to="/gallery">Gallery</Link>
+        </Menu.Item>
+        <Menu.Item key="5">
+          <Link to="/projects">Projects</Link>
+        </Menu.Item>
+        <Menu.Item key="6">
+          <Link to="/testimonials">Testimonials</Link>
+        </Menu.Item>
+      </Menu>
     </nav>
   );
 }
