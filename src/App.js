@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className='flex w-full h-screen'>
-      <HomePage /> {/* HomePage component */}
+      <HomePage />
     </div>
   );
 }
