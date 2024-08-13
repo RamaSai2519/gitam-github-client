@@ -1,8 +1,7 @@
 import React from 'react';
-import { Layout, Menu, Dropdown, Button, Space } from 'antd';
+import { Layout, Menu, Dropdown, Button } from 'antd';
 import { DownOutlined, GithubOutlined } from '@ant-design/icons';
 import gitamLogo from '../assets/gitamlogo.png'; // Ensure this path is correct
-import githubLogo from '../assets/githublogo.png'; // Ensure this path is correct
 
 const { Header: AntHeader } = Layout;
 
