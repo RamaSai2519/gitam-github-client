@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Card, Col, Row, Typography, Carousel } from 'antd';
-import GitHubImage from '../../assets/githublogo.png';
 import { ReactTyped } from 'react-typed';
 import Header from '../../components/Header';
 
@@ -23,24 +22,27 @@ const carouselItems = [
 
 const typingSpeed = 100; // Speed of typing
 
-function HomePage() {
-    const text = 'Welcome to GitHub Community Club!';
-
+const HomePage = () => {
     return (
         <div>
             <Header />
-            <main className="bg-gray-100 min-h-screen mt-24"> {/* Increased padding-top */}
-                {/* Hero Section */}
-                <div className="relative text-center text-white">
+            <main className="bg-gray-100 min-h-screen mt-5"> {/* Increased padding-top */}
+                <div className="text-center">
                     <Carousel autoplay effect="fade">
                         {carouselItems.map((item, index) => (
                             <div key={index}>
-                                <img src={item.src} alt={item.alt} className="carousel-image" />
+                                <img src={item.src} alt={item.alt} className="carousel-image rounded-lg" />
                             </div>
                         ))}
                     </Carousel>
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <ReactTyped strings={[text]} typeSpeed={typingSpeed} backSpeed={typingSpeed} loop />
+                    <div>
+                        <ReactTyped
+                            strings={[`<span class='text-5xl'>Welcome To GitHub Community Club!</span>`]}
+                            contentType='html'
+                            typeSpeed={typingSpeed}
+                            backSpeed={typingSpeed} loop
+                            showCursor={false}
+                        />
                         <Paragraph className="text-xl mb-6">
                             Join us in our mission to foster growth, collaboration, and innovation through open-source projects and community engagement.
                         </Paragraph>
@@ -105,7 +107,7 @@ function HomePage() {
 
                 {/* GitHub Section */}
                 <div className="p-8 text-center">
-                    <img src={GitHubImage} alt="GitHub" className="mx-auto h-20 mb-4" />
+                    <img src="/assets/gitamlogo.png" alt="GitHub" className="mx-auto h-20 mb-4" />
                     <Title level={3}>Powered by GitHub</Title>
                     <Paragraph>
                         Discover the power of GitHub for your projects and learn how to contribute to the open-source community. Join us and be part of a global movement of innovation and collaboration.
