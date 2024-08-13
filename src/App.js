@@ -9,8 +9,9 @@ import TestimonialsPage from './pages/TestimonialsPage';
 import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
 import './App.css';
+import Footer from './components/Footer';
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 
 function App() {
   return (
@@ -29,9 +30,7 @@ function App() {
             </Routes>
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Gitam GitHub Community ©2024 Created by Your Team!
-        </Footer>
+        <Footer />
       </Layout>
     </Router>
   );

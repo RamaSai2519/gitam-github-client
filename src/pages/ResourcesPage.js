@@ -30,8 +30,8 @@ const resources = [
 
 function ResourcesPage() {
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4">Resources</h2>
+    <div className='w-full h-[88vh] overflow-clip'>
+      <h2 className="w-full text-center text-xl font-semibold mb-4">Resources</h2>
       <Row gutter={16}>
         {resources.map(resource => (
           <Col span={8} key={resource.id} className="mb-4">

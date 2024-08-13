@@ -3,7 +3,7 @@ import { Form, Input, Button, Card } from 'antd';
 
 function ContactPage() {
   return (
-    <div style={{ padding: '30px', maxWidth: '600px', margin: '0 auto' }}>
+    <div className='flex items-center justify-center w-full h-[88vh] overflow-clip'>
       <Card title="Contact Us" bordered={false} style={{ borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
         <p>If you have any questions or need more information, please reach out to us using the form below:</p>
         <Form layout="vertical">

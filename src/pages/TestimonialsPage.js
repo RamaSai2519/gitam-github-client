@@ -5,7 +5,7 @@ import { UserOutlined } from '@ant-design/icons';
 const testimonials = [
   {
     id: 1,
-    name: 'Sumaya',
+    name: 'Sumayya',
     role: 'Developer',
     message: 'The Gitam GitHub Community has been incredibly supportive and resourceful. The projects and mentorship opportunities have helped me grow as a developer.',
     rating: 5,

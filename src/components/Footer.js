@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 
 const { Footer: AntFooter } = Layout;
 
-function Footer() {
+const Footer = () => {
   return (
     <AntFooter style={{ backgroundColor: '#001529', color: '#fff', textAlign: 'center', padding: '20px 50px' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
