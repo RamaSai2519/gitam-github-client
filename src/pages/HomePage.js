@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/Header'; 
+import Header from '../components/Header'; // Ensure the path is correct
 
 function HomePage() {
   return (
@@ -7,7 +7,7 @@ function HomePage() {
       <Header />
       <main className="p-4">
         <h2 className="text-xl font-semibold">Welcome to the Gitam GitHub Community!</h2>
-        {/*content here */}
+        {/* Add more content here */}
       </main>
     </div>
   );
