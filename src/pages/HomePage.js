@@ -6,7 +6,7 @@ function HomePage() {
     <div>
       <Header />
       <main className="p-4">
-        <h2 className="text-xl font-semibold">Welcome to the Gitam GitHub Community!</h2>
+        <h2 className="text-xl text-white font-semibold">Welcome to the Gitam GitHub Community!</h2>
         {/* content */}
       </main>
     </div>
