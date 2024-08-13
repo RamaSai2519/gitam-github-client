@@ -18,12 +18,12 @@ const images = [
   {
     id: 1,
     title: 'Community Meetup',
-    src: `${process.env.PUBLIC_URL}/images/meetup.jpg`,
+    src: `/assets/meetup.jpg`,
   },
   {
     id: 2,
     title: 'Workshop Event',
-    src: `${process.env.PUBLIC_URL}/images/workshop.jpg`,
+    src: `/assets/workshop.jpg`,
   },
 ];
 
