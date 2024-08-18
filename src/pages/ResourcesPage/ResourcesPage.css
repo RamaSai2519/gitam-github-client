@@ -1,0 +1,51 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.resources-page {
+    background: linear-gradient(to right, #f0f4f8, #e1e8ee);
+    background-image: url('https://www.transparenttextures.com/patterns/whirlpool.png');
+    background-blend-mode: overlay;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+/* Card styles */
+.card-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-cover {
+    object-fit: cover;
+    height: 180px; /* Fixed height for consistency */
+    width: 100%;
+}
+
+.card-title {
+    font-weight: 600;
+    color: #333;
+}
+
+.card-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #666;
+}
+
+.card-actions a {
+    color: #1890ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.card-actions a:hover {
+    color: #40a9ff;
+}
