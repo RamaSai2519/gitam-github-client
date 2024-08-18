@@ -8,8 +8,9 @@ import ProjectPage from './pages/ProjectPage';
 import TestimonialsPage from './pages/TestimonialsPage';
 import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
-import './App.css';
+import Header from './components/Header';
 import Footer from './components/Footer';
+import './App.css';
 
 const { Content } = Layout;
 
@@ -17,7 +18,8 @@ function App() {
   return (
     <Router>
       <Layout className="layout">
-        <Content style={{ padding: '0 50px' }}>
+        <Header /> {/* Header is included here to be consistent across all pages */}
+        <Content style={{ padding: '0 50px', marginTop: '16px' }}>
           <div className="site-layout-content" style={{ margin: '16px 0' }}>
             <Routes>
               <Route path="/" element={<HomePage />} />
