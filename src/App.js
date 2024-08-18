@@ -10,6 +10,7 @@ import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import './App.css';
 
 const { Content } = Layout;
@@ -34,6 +35,7 @@ function App() {
         </Content>
         <Footer />
       </Layout>
+      <SpeedInsights />
     </Router>
   );
 }
