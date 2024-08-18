@@ -15,19 +15,24 @@ const projects = [
     description: 'Mark Word is a game designed to enhance vocabulary and word recognition skills. This project involves game development with interactive features.',
     link: 'https://github.com/RamaSai2519/mark-word',
   },
+  {
+    id: 3,
+    title: 'Code camp',
+    description: 'freeCodeCamp is a  open-source codebase and curriculum,Learn to code for free.',
+    link: 'https://github.com/freeCodeCamp/freeCodeCamp',
+  },
 ];
 
 function ProjectPage() {
   return (
-    <div className="p-8">
-      <h2 className="text-4xl font-bold text-center mb-12">Our Projects</h2>
-      <Row gutter={16}>
-        {projects.map(project => (
-          <Col span={24} md={12} lg={8} key={project.id} className="mb-8">
+    <div className="flex flex-col min-h-screen">
+      <div>
+        <h2 className="text-4xl font-bold text-center mb-12">Our Projects</h2>
+        <div className='grid md:grid-cols-3 gap-5'>
+          {projects.map(project => (
             <Card
               title={project.title}
               bordered={false}
-              style={{ borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}
               extra={
                 <Button
                   type="primary"
@@ -40,11 +45,13 @@ function ProjectPage() {
                 </Button>
               }
             >
-              <p>{project.description}</p>
+              <div className="max-h-24 overflow-y-auto">
+                <p>{project.description}</p>
+              </div>
             </Card>
-          </Col>
-        ))}
-      </Row>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
