@@ -1,64 +1,83 @@
 import React from 'react';
-import { Card, Button, Row, Col } from 'antd';
-import { GithubOutlined } from '@ant-design/icons';
+import { Card, Col, Row } from 'antd';
 
-const projects = [
+const videos = [
   {
     id: 1,
-    title: 'Emotion Detection using CNN',
-    description: 'This project focuses on detecting emotions using Convolutional Neural Networks (CNN). It includes training a model to identify different emotions from facial expressions.',
-    link: 'https://github.com/lechakrawarthy/Emotion_Detection_CNN',
+    title: 'What is GitHub?',
+    url: 'https://www.youtube.com/embed/pBy1zgt0XPc',
   },
   {
     id: 2,
-    title: 'Mark Word Game',
-    description: 'Mark Word is a game designed to enhance vocabulary and word recognition skills. This project involves game development with interactive features.',
-    link: 'https://github.com/RamaSai2519/mark-word',
-  },
-  {
-    id: 3,
-    title: 'Code camp',
-    description: 'freeCodeCamp is an open-source codebase and curriculum,Learn to code for free.',
-    link: 'https://github.com/freeCodeCamp/freeCodeCamp',
+    title: 'How to Contribute to Open Source',
+    url: 'https://www.youtube.com/embed/yzeVMecydCE',
   },
 ];
 
-function ProjectPage() {
+const images = [
+  {
+    id: 1,
+    title: 'Community Meetup',
+    src: `/assets/meetup.jpg`,
+  },
+  {
+    id: 2,
+    title: 'Workshop Event',
+    src: `/assets/workshop.jpg`,
+  },
+];
+
+function GalleryPage() {
   return (
-    <div className="w-full min-h-screen p-6 bg-white">
-      <h2 className="text-4xl font-bold text-center mb-12">Our Projects</h2>
-      <Row gutter={[16, 16]} justify="center">
-        {projects.map(project => (
-          <Col xs={24} sm={12} md={8} lg={6} key={project.id} className="mb-8">
-            <Card
-              hoverable
-              bordered={false}
-              style={{ borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}
-              actions={[
-                <Button
-                  type="primary"
-                  icon={<GithubOutlined />}
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View on GitHub
-                </Button>
-              ]}
-              className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="flex flex-col h-48">
-                <h3 className="text-lg font-semibold">{project.title}</h3>
-                <div className="flex-grow overflow-hidden">
-                  <p className="text-gray-600 text-sm overflow-y-auto h-24">{project.description}</p>
-                </div>
-              </div>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+    <div className="p-8">
+      <h2 className="text-4xl font-bold text-center mb-12">Gallery</h2>
+
+      {/* Videos Section */}
+      <div className="mb-16">
+        <h3 className="text-3xl font-semibold mb-8">Videos</h3>
+        <Row gutter={16}>
+          {videos.map((video) => (
+            <Col xs={24} sm={12} lg={8} key={video.id}>
+              <Card
+                cover={
+                  <div className="relative pb-[56.25%]">
+                    <iframe
+                      className="absolute top-0 left-0 w-full h-full"
+                      src={video.url}
+                      title={video.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                }
+                bordered={false}
+              >
+                <Card.Meta title={video.title} />
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </div>
+
+      {/* Images Section */}
+      <div>
+        <h3 className="text-3xl font-semibold mb-8">Photos</h3>
+        <Row gutter={16}>
+          {images.map((image) => (
+            <Col xs={24} sm={12} lg={8} key={image.id}>
+              <Card
+                cover={<img alt={image.title} src={image.src} className="w-full h-auto" />}
+                bordered={false}
+              >
+                <Card.Meta title={image.title} />
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </div>
     </div>
   );
 }
 
-export default ProjectPage;
+export default GalleryPage;

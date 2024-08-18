@@ -23,7 +23,7 @@ const typingSpeed = 100; // Speed of typing
 
 const HomePage = () => {
     return (
-        <main className="bg-gray-100 min-h-screen mt-5">
+        <div className="bg-gray-100 min-h-screen w-full">
             <div className="text-center">
                 <Carousel autoplay effect="fade">
                     {carouselItems.map((item, index) => (
@@ -112,7 +112,7 @@ const HomePage = () => {
                     Discover the power of GitHub for your projects and learn how to contribute to the open-source community. Join us and be part of a global movement of innovation and collaboration.
                 </Paragraph>
             </div>
-        </main>
+        </div>
     );
 };
 

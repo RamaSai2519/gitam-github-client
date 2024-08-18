@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, Col, Row, Typography, Divider } from 'antd';
 import { YoutubeOutlined, BookOutlined } from '@ant-design/icons';
-import './ResourcesPage.css';
 
 const { Meta } = Card;
 const { Title } = Typography;
@@ -111,7 +110,7 @@ const blogResources = [
 
 function ResourcesPage() {
   return (
-    <div className='w-full min-h-screen p-6 bg-custom-gradient'>
+    <div className='w-full min-h-screen p-6'>
       <Title level={2} className="text-center mb-6 text-white">Resources</Title>
       <Divider className="border-white" />
 

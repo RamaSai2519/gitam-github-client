@@ -26,34 +26,31 @@ const projects = [
 function ProjectPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="p-8 flex-grow">
+      <div>
         <h2 className="text-4xl font-bold text-center mb-12">Our Projects</h2>
-        <Row gutter={16}>
+        <div className='grid md:grid-cols-3 gap-5'>
           {projects.map(project => (
-            <Col span={24} md={12} lg={8} key={project.id} className="mb-8">
-              <Card
-                title={project.title}
-                bordered={false}
-                style={{ borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}
-                extra={
-                  <Button
-                    type="primary"
-                    icon={<GithubOutlined />}
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View on GitHub
-                  </Button>
-                }
-              >
-                <div className="max-h-24 overflow-y-auto">
-                  <p className="line-clamp-4">{project.description}</p>
-                </div>
-              </Card>
-            </Col>
+            <Card
+              title={project.title}
+              bordered={false}
+              extra={
+                <Button
+                  type="primary"
+                  icon={<GithubOutlined />}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on GitHub
+                </Button>
+              }
+            >
+              <div className="max-h-24 overflow-y-auto">
+                <p>{project.description}</p>
+              </div>
+            </Card>
           ))}
-        </Row>
+        </div>
       </div>
     </div>
   );

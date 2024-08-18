@@ -1,96 +1,40 @@
 import React from 'react';
-import { Layout, Menu, Dropdown, Button } from 'antd';
-import { DownOutlined, GithubOutlined } from '@ant-design/icons';
+import { Menu } from 'antd';
+import { GithubOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
-const { Header: AntHeader } = Layout;
+const menuItems = [
+  { key: '1', link: '/', label: 'Home' },
+  { key: '2', link: '/team', label: 'Team' },
+  { key: '3', link: '/resources', label: 'Resources' },
+  { key: '4', link: '/gallery', label: 'Gallery' },
+  { key: '5', link: '/projects', label: 'Projects' },
+  { key: '6', link: '/testimonials', label: 'Testimonials' },
+  { key: '7', link: '/contact', label: 'Contact' },
+];
 
-const menu = (
-  <Menu>
-    <Menu.Item key="4">
-      <Link to="/gallery">Gallery</Link>
-    </Menu.Item>
-    <Menu.Item key="5">
-      <Link to="/projects">Projects</Link>
-    </Menu.Item>
-    <Menu.Item key="6">
-      <Link to="/testimonials">Testimonials</Link>
-    </Menu.Item>
-    <Menu.Item key="7">
-      <Link to="/contact">Contact</Link>
-    </Menu.Item>
-  </Menu>
-);
-
-function Header() {
+const Header = () => {
   return (
-    <AntHeader
-      style={{
-        backgroundColor: '#001529',
-        padding: '0 20px',
-        borderRadius: '0 0 10px 10px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          height: '64px',
-          justifyContent: 'space-between',
-        }}
-      >
-        <img
-          src="/assets/gitamlogo.png"
-          alt="Gitam Logo"
-          style={{ height: '40px', marginRight: '20px', borderRadius: '8px' }}
-        />
-        <h1
-          style={{
-            color: '#fff',
-            fontSize: '24px',
-            fontWeight: 'bold',
-            margin: 0,
-          }}
-        >
-          Gitam GitHub Community
-        </h1>
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          style={{
-            backgroundColor: 'transparent',
-            borderBottom: 'none',
-            lineHeight: '64px',
-          }}
-        >
-          <Menu.Item key="1">
-            <Link to="/">Home</Link>
+    <div className='bg-[#001529] justify-between shadow-md rounded-b-lg pr-4 flex items-center h-16 w-full' >
+      <img
+        src="/assets/gitamlogo.png"
+        alt="Gitam Logo"
+        className="h-10 ml-4"
+      />
+      <h1 className='hidden md:flex text-white text-2xl font-bold m-0'>
+        Gitam GitHub Community
+      </h1>
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} >
+        {menuItems.map(item => (
+          <Menu.Item style={{borderRadius: "10px"}} key={item.key}>
+            <Link to={item.link}>{item.label}</Link>
           </Menu.Item>
-          <Menu.Item key="2">
-            <Link to="/team">Team</Link>
-          </Menu.Item>
-          <Menu.Item key="3">
-            <Link to="/resources">Resources</Link>
-          </Menu.Item>
-        </Menu>
-        <Dropdown overlay={menu} trigger={['click']} placement="bottomRight">
-          <Button type="link" style={{ color: '#fff' }}>
-            View More <DownOutlined />
-          </Button>
-        </Dropdown>
-        <a
-          href="https://github.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ marginLeft: '20px' }}
-        >
-          <GithubOutlined style={{ fontSize: '24px', color: '#fff' }} />
-        </a>
-      </div>
-    </AntHeader>
+        ))}
+      </Menu>
+      <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className='ml-4'>
+        <GithubOutlined className='text-white text-2xl' />
+      </a>
+    </div>
   );
 }
 

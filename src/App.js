@@ -17,10 +17,10 @@ const { Content } = Layout;
 function App() {
   return (
     <Router>
-      <Layout className="layout">
+      <Layout>
         <Header /> {/* Header is included here to be consistent across all pages */}
-        <Content style={{ padding: '0 50px', marginTop: '16px' }}>
-          <div className="site-layout-content" style={{ margin: '16px 0' }}>
+        <Content>
+          <div className="w-full p-5">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/team" element={<TeamPage />} />
