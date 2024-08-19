@@ -1,7 +1,7 @@
 import React from 'react';
 import TeamPage from '../TeamPage';
 import { Button, Card, Col, Row, Typography, Carousel } from 'antd';
-import TypingEffect from 'react-typing-effect'; 
+import TypingEffect from 'react-typing-effect';
 
 const { Title, Paragraph } = Typography;
 
@@ -20,7 +20,35 @@ const carouselItems = [
     },
 ];
 
-const typingSpeed = 100; // Speed of typing
+const typingSpeed = 100;
+
+const quotes = [
+    {
+        text: "GitHub has been an incredible platform for me to collaborate with developers around the world. It's a game-changer for open-source contributions.",
+        author: "Linus Torvalds",
+        title: "Creator of Linux",
+    },
+    {
+        text: "GitHub provided me the tools to manage my open-source projects efficiently and connect with a global community of developers.",
+        author: "Scott Hanselman",
+        title: "Software Engineer & Advocate",
+    },
+    {
+        text: "GitHub is where I found the collaboration and support I needed to advance my career and contribute to meaningful projects.",
+        author: "Jessica McKellar",
+        title: "Open Source Advocate & Software Engineer",
+    },
+    {
+        text: "The power of open-source collaboration is amplified by platforms like GitHub. It’s been crucial for my professional growth.",
+        author: "Matt Mullenweg",
+        title: "Co-Founder of WordPress",
+    },
+    {
+        text: "GitHub has enabled me to share my work with the world and collaborate with other passionate developers.",
+        author: "Evan You",
+        title: "Creator of Vue.js",
+    },
+];
 
 const HomePage = () => {
     return (
@@ -29,14 +57,15 @@ const HomePage = () => {
                 <Carousel autoplay effect="fade">
                     {carouselItems.map((item, index) => (
                         <div key={index}>
-                            <img src={item.src} alt={item.alt} className="carousel-image rounded-lg" />
+                            <img src={item.src} alt={item.alt} className="w-full h-64 object-cover rounded-lg" />
                         </div>
                     ))}
                 </Carousel>
-                <div>
+                <div className="py-8">
                     <TypingEffect
-                        text={['Welcome To GitHub Community.!']}
-                        speed={typingSpeed}                        typingDelay={500}
+                        text={['Welcome To GitHub Community!']}
+                        speed={typingSpeed}
+                        typingDelay={500}
                         cursorRenderer={cursor => <b>{cursor}</b>}
                         className="text-3xl md:text-7xl font-bold"
                     />
@@ -58,6 +87,7 @@ const HomePage = () => {
                             title="Collaborate"
                             bordered={false}
                             className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
+                            cover={<img alt="Collaborate" src="/assets/collaborate-icon.svg" className="w-16 h-16 mx-auto mt-4" />}
                         >
                             <Paragraph>
                                 Engage with like-minded individuals on various projects and initiatives to make an impact through open-source contributions.
@@ -69,6 +99,7 @@ const HomePage = () => {
                             title="Learn"
                             bordered={false}
                             className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
+                            cover={<img alt="Learn" src="/assets/learn-icon.svg" className="w-16 h-16 mx-auto mt-4" />}
                         >
                             <Paragraph>
                                 Access a wealth of resources, tutorials, and workshops to enhance your skills and stay updated with the latest in technology.
@@ -80,6 +111,7 @@ const HomePage = () => {
                             title="Network"
                             bordered={false}
                             className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
+                            cover={<img alt="Network" src="/assets/network-icon.svg" className="w-16 h-16 mx-auto mt-4" />}
                         >
                             <Paragraph>
                                 Connect with industry professionals, mentors, and peers to expand your network and collaborate on exciting projects.
@@ -87,6 +119,26 @@ const HomePage = () => {
                         </Card>
                     </Col>
                 </Row>
+            </div>
+
+            {/* Success Stories Section */}
+            <div className="bg-white p-8">
+                <Title level={2} className="text-center mb-8">Success Stories</Title>
+                <div className="flex flex-wrap justify-center gap-6">
+                    {quotes.map((quote, index) => (
+                        <div
+                            key={index}
+                            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 hover:translate-y-2 max-w-xs"
+                        >
+                            <Paragraph className="italic text-gray-700">
+                                "{quote.text}"
+                            </Paragraph>
+                            <Paragraph className="text-right font-bold text-gray-900">
+                                - {quote.author}, {quote.title}
+                            </Paragraph>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             {/* Call to Action Section */}

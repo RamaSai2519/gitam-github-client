@@ -47,6 +47,15 @@ module.exports = {
         "8xl": "6rem",
         "9xl": "8rem",
       },
+      keyframes: {
+        moveInfinite: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+      },
+      animation: {
+        moveInfinite: 'moveInfinite 30s linear infinite',
+      },
     },
   },
   plugins: [],
