@@ -33,8 +33,7 @@ const images = [
     src: '/assets/Slide 4.png',
   }
 ];
-
-function GalleryPage() {
+const GalleryPage = () => {
   return (
     <div className="p-8 bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen">
       <h2 className="text-5xl font-bold text-center mb-12 text-gray-800">Gallery</h2>
@@ -61,6 +60,6 @@ function GalleryPage() {
       </div>
     </div>
   );
-}
+};
 
 export default GalleryPage;
