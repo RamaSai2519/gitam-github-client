@@ -8,17 +8,20 @@ import ProjectPage from './pages/ProjectPage';
 import TestimonialsPage from './pages/TestimonialsPage';
 import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
-import './App.css';
+import Header from './components/Header';
 import Footer from './components/Footer';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import './App.css';
 
 const { Content } = Layout;
 
 function App() {
   return (
     <Router>
-      <Layout className="layout">
-        <Content style={{ padding: '0 50px' }}>
-          <div className="site-layout-content" style={{ margin: '16px 0' }}>
+      <Layout>
+        <Header /> {/* Header is included here to be consistent across all pages */}
+        <Content>
+          <div className="w-full p-5">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/team" element={<TeamPage />} />
@@ -32,6 +35,7 @@ function App() {
         </Content>
         <Footer />
       </Layout>
+      <SpeedInsights />
     </Router>
   );
 }
