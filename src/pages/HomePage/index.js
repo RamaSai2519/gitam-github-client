@@ -48,6 +48,11 @@ const quotes = [
         author: "Evan You",
         title: "Creator of Vue.js",
     },
+    {
+        text: "GitHub has transformed the way I approach open-source development and collaboration with others in the tech community.",
+        author: "Brendan Eich",
+        title: "Creator of JavaScript",
+    },
 ];
 
 const HomePage = () => {
@@ -111,7 +116,7 @@ const HomePage = () => {
                             title="Network"
                             bordered={false}
                             className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
-                            cover={<img alt="Network" src="/assets/network-icon.svg" className="w-16 h-16 mx-auto mt-4" />}
+                            cover={<img alt="Network" src='/assets/network-group-svgrepo-com.svg' className="w-16 h-16 mx-auto mt-4" />}
                         >
                             <Paragraph>
                                 Connect with industry professionals, mentors, and peers to expand your network and collaborate on exciting projects.
@@ -124,20 +129,22 @@ const HomePage = () => {
             {/* Success Stories Section */}
             <div className="bg-white p-8">
                 <Title level={2} className="text-center mb-8">Success Stories</Title>
-                <div className="flex flex-wrap justify-center gap-6">
-                    {quotes.map((quote, index) => (
-                        <div
-                            key={index}
-                            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 hover:translate-y-2 max-w-xs"
-                        >
-                            <Paragraph className="italic text-gray-700">
-                                "{quote.text}"
-                            </Paragraph>
-                            <Paragraph className="text-right font-bold text-gray-900">
-                                - {quote.author}, {quote.title}
-                            </Paragraph>
-                        </div>
-                    ))}
+                <div className="overflow-hidden relative">
+                    <div className="flex animate-moveInfinite">
+                        {quotes.map((quote, index) => (
+                            <div
+                                key={index}
+                                className="bg-white p-6 mx-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 max-w-xs"
+                            >
+                                <Paragraph className="italic text-gray-700">
+                                    "{quote.text}"
+                                </Paragraph>
+                                <Paragraph className="text-right font-bold text-gray-900">
+                                    - {quote.author}, {quote.title}
+                                </Paragraph>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
