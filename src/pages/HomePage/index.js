@@ -1,4 +1,5 @@
 import React from 'react';
+import TeamPage from '../TeamPage';
 import { Button, Card, Col, Row, Typography, Carousel } from 'antd';
 import TypingEffect from 'react-typing-effect'; 
 
@@ -35,12 +36,9 @@ const HomePage = () => {
                 <div>
                     <TypingEffect
                         text={['Welcome To GitHub Community.!']}
-                        speed={typingSpeed}
-                        eraseSpeed={typingSpeed}
-                        eraseDelay={2000}
-                        typingDelay={500}
+                        speed={typingSpeed}                        typingDelay={500}
                         cursorRenderer={cursor => <b>{cursor}</b>}
-                        className="text-7xl font-bold"
+                        className="text-3xl md:text-7xl font-bold"
                     />
                     <Paragraph className="text-2xl mb-6">
                         Join us in our mission to foster growth, collaboration, and innovation through open-source projects and community engagement.
@@ -112,6 +110,7 @@ const HomePage = () => {
                     Discover the power of GitHub for your projects and learn how to contribute to the open-source community. Join us and be part of a global movement of innovation and collaboration.
                 </Paragraph>
             </div>
+            <TeamPage />
         </div>
     );
 };

@@ -21,7 +21,7 @@ const Header = () => {
         alt="Gitam Logo"
         className="h-10 ml-4"
       />
-      <h1 className='hidden md:flex text-white text-2xl font-bold m-0'>
+      <h1 className='hidden xl:flex text-white text-2xl font-bold m-0'>
         Gitam GitHub Community
       </h1>
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} >
