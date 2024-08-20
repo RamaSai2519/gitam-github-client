@@ -129,9 +129,9 @@ const HomePage = () => {
             {/* Success Stories Section */}
             <div className="bg-white p-8">
                 <Title level={2} className="text-center mb-8">Success Stories</Title>
-                <div className="overflow-hidden relative">
-                    <div className="flex animate-moveInfinite">
-                        {quotes.map((quote, index) => (
+                <div className="overflow-x-clip">
+                    <div className="flex animate-slide">
+                        {[...quotes, ...quotes].map((quote, index) => (
                             <div
                                 key={index}
                                 className="bg-white p-6 mx-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 max-w-xs"
