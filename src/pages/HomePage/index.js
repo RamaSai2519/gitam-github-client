@@ -15,8 +15,16 @@ const carouselItems = [
         alt: 'Collaborate and Innovate',
     },
     {
-        src: 'https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ef7ceb6-65c7-4f52-9922-e4d9cc4c3af4_3840x2160.png',
+        src: 'https://miro.medium.com/v2/resize:fit:1200/1*vPz_vIBOgLlcdge-FzJMVA.png',
         alt: 'Grow with Us',
+    },
+    {
+        src: 'https://event-sponsorship.github.com/assets/images/hero-bg-23.jpeg',
+        alt: 'GitHub Universe',
+    },
+    {
+        src: 'https://media.licdn.com/dms/image/v2/C4D12AQFt3PVoxjvBeQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1612776307084?e=2147483647&v=beta&t=KXaYFtGbMwMqjF6LUxnAc-keQs8mC5eBydeh-0Fa4ww',
+        alt: 'GitHub Open Source',
     },
 ];
 
