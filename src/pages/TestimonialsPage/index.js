@@ -77,14 +77,6 @@ const testimonials = [
     rating: 4.9,
     detailedReview: 'Exploring cutting-edge AI technologies has been made possible through the resources and mentorship available in this community.',
   },
-  {
-    id: 10,
-    name: 'Deeksha Oruganti',
-    role: 'Blockchain Developer',
-    message: 'The support and guidance from this community have been crucial in navigating the complex world of blockchain development.',
-    rating: 4.3,
-    detailedReview: 'Navigating the world of blockchain development has been challenging, but the support and guidance I’ve received here have been invaluable.',
-  },
 ];
 
 function TestimonialPage() {
