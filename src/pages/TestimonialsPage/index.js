@@ -105,9 +105,9 @@ function TestimonialPage() {
     if (showConfetti) {
       const timer = setTimeout(() => {
         setShowConfetti(false);
-      }, 3000); // Adjust duration if needed
+      }, 3000); 
 
-      return () => clearTimeout(timer); // Cleanup timer on unmount
+      return () => clearTimeout(timer); 
     }
   }, [showConfetti]);
 
