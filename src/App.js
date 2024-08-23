@@ -1,17 +1,17 @@
+import './App.css';
 import React from 'react';
 import { Layout } from 'antd';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TeamPage from './pages/TeamPage';
-import ResourcesPage from './pages/ResourcesPage';
-import GalleryPage from './pages/GalleryPage';
-import ProjectPage from './pages/ProjectPage';
-import TestimonialsPage from './pages/TestimonialsPage';
-import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ProjectPage from './pages/ProjectPage';
+import GalleryPage from './pages/GalleryPage';
+import ContactPage from './pages/ContactPage';
+import ResourcesPage from './pages/ResourcesPage';
+import TestimonialsPage from './pages/TestimonialsPage';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const { Content } = Layout;
 

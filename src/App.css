@@ -45,3 +45,24 @@
     border-color: transparent;
   }
 }
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide {
+  display: flex;
+  animation: slide 30s linear infinite;
+  width: calc(200% + 16px);
+}
+
+.animate-slide>div {
+  flex-shrink: 0;
+  width: 25%;
+}

@@ -1,0 +1,123 @@
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial, sans-serif';
+    padding: 0;
+}
+
+.contact-content {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    padding: 40px 0;
+}
+
+.contact-left, .contact-right {
+    width: 48%;
+}
+
+.contact-left {
+    text-align: left;
+}
+
+.contact-left h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.contact-left p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.contact-left a {
+    color: #175793;
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    margin-top: 30px;
+}
+
+.contact-info-section {
+    margin-bottom: 20px;
+}
+
+.contact-info-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+.social-media-icons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-media-icons a {
+    font-size: 24px;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.social-media-icons a:hover {
+    color: #1890ff;
+}
+
+.contact-right {
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.contact-form-card {
+    background: rgba(119, 176, 230, 0.2); /* Light transparent background */
+    -webkit-backdrop-filter: blur(15px) saturate(180%); /* Blurring and color saturation */
+    backdrop-filter: blur(15px) saturate(180%); /* Safari support */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); /* Soft shadow for depth */
+    border: 1px solid rgba(0, 234, 255, 0.18); /* Light border */
+    padding: 20px;
+    position: relative;
+    z-index: 3; /* Ensures it stands out */
+}
+
+.contact-form-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contact-form-card p {
+    margin-bottom: 20px;
+}
+
+.contact-form-footer {
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.contact-form-footer a {
+    color: #1890ff;
+}
+
+.faq-section {
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.faq-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
