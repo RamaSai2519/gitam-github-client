@@ -1,7 +1,6 @@
 import React from 'react';
-import TeamPage from '../TeamPage';
-import { Button, Card, Col, Row, Typography, Carousel } from 'antd';
 import TypingEffect from 'react-typing-effect';
+import { Button, Card, Col, Row, Typography, Carousel } from 'antd';
 
 const { Title, Paragraph } = Typography;
 
@@ -100,7 +99,7 @@ const HomePage = () => {
                             title="Collaborate"
                             bordered={false}
                             className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
-                            cover={<img alt="Collaborate" src="/assets/collaborate-icon.svg" className="w-16 h-16 mx-auto mt-4" />}
+                            cover={<img alt="Collaborate" src="/assets/cooperate-svgrepo-com.svg" className="w-16 h-16 mx-auto mt-4" />}
                         >
                             <Paragraph>
                                 Engage with like-minded individuals on various projects and initiatives to make an impact through open-source contributions.
@@ -112,7 +111,7 @@ const HomePage = () => {
                             title="Learn"
                             bordered={false}
                             className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
-                            cover={<img alt="Learn" src="/assets/learn-icon.svg" className="w-16 h-16 mx-auto mt-4" />}
+                            cover={<img alt="Learn" src="/assets/elearning-education-learn-svgrepo-com.svg" className="w-16 h-16 mx-auto mt-4" />}
                         >
                             <Paragraph>
                                 Access a wealth of resources, tutorials, and workshops to enhance your skills and stay updated with the latest in technology.
@@ -177,7 +176,6 @@ const HomePage = () => {
                     Discover the power of GitHub for your projects and learn how to contribute to the open-source community. Join us and be part of a global movement of innovation and collaboration.
                 </Paragraph>
             </div>
-            <TeamPage />
         </div>
     );
 };

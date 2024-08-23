@@ -15,7 +15,7 @@ const images = [
   {
     id: 3,
     title: 'Student Induction Program',
-    src: '/assets/sip.jpeg',
+    src: '/assets/sip.png',
   },
   {
     id: 4,

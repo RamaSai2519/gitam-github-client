@@ -80,8 +80,8 @@
 
 .contact-form-card {
     background: rgba(119, 176, 230, 0.2); /* Light transparent background */
-    backdrop-filter: blur(15px) saturate(180%); /* Blurring and color saturation */
-    -webkit-backdrop-filter: blur(15px) saturate(180%); /* Safari support */
+    -webkit-backdrop-filter: blur(15px) saturate(180%); /* Blurring and color saturation */
+    backdrop-filter: blur(15px) saturate(180%); /* Safari support */
     border-radius: 20px; /* Rounded corners */
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); /* Soft shadow for depth */
     border: 1px solid rgba(0, 234, 255, 0.18); /* Light border */

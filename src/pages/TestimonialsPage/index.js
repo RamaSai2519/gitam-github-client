@@ -149,12 +149,12 @@ function TestimonialPage() {
 
       {/* Detailed Review Modal */}
       <Modal
-        visible={!!selectedTestimonial}
+        open={!!selectedTestimonial}
         footer={null}
         onCancel={handleCloseModal}
         centered
         className="modal-glass-effect"
-        bodyStyle={{ padding: '0' }}
+        style={{ padding: '0' }}
       >
         <div className="p-8 text-center">
           {selectedTestimonial && (
