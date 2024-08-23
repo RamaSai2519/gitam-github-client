@@ -1,6 +1,7 @@
 import React from 'react';
 import TypingEffect from 'react-typing-effect';
 import { Button, Card, Col, Row, Typography, Carousel } from 'antd';
+import ThreeScene from '../../components/ThreeScene';
 
 const { Title, Paragraph } = Typography;
 
@@ -64,8 +65,25 @@ const quotes = [
 
 const HomePage = () => {
     return (
-        <div className="bg-gray-100 min-h-screen w-full">
-            <div className="text-center">
+        <div className="bg-black min-h-screen w-full text-white">
+            {/* Space Background */}
+            <ThreeScene />
+
+            {/* Content below the 3D scene */}
+            <div className="text-center py-16">
+                <Title level={1} className="text-4xl md:text-6xl font-bold">
+                    Explore the Universe with Us!
+                </Title>
+                <Paragraph className="text-lg md:text-2xl mb-8">
+                    Join our space-themed community and dive into the mysteries of the cosmos.
+                </Paragraph>
+                <Button type="primary" size="large" href="/explore">
+                    Start Your Journey
+                </Button>
+            </div>
+
+            {/* Carousel Section */}
+            <div className="p-8">
                 <Carousel autoplay effect="fade">
                     {carouselItems.map((item, index) => (
                         <div key={index}>
