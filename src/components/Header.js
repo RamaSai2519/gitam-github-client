@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu } from 'antd';
-import { GithubOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { GithubOutlined } from '@ant-design/icons';
 
 const menuItems = [
   { key: '1', link: '/', label: 'Home' },
@@ -16,11 +16,13 @@ const menuItems = [
 const Header = () => {
   return (
     <div className='bg-[#001529] justify-between shadow-md rounded-b-lg pr-4 flex items-center h-16 w-full' >
-      <img
-        src="/assets/gitamlogo.png"
-        alt="Gitam Logo"
-        className="h-10 ml-4"
-      />
+      <a href="/">
+        <img
+          src="/assets/gitamlogo.png"
+          alt="Gitam Logo"
+          className="h-10 ml-4"
+        />
+      </a>
       <h1 className='hidden xl:flex text-white text-2xl font-bold m-0'>
         Gitam GitHub Community
       </h1>
