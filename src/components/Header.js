@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import { GithubOutlined } from '@ant-design/icons';
+import './Header.css';
 
 const menuItems = [
   { key: '1', link: '/', label: 'Home' },
@@ -14,30 +15,43 @@ const menuItems = [
 ];
 
 const Header = () => {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  const toggleMode = () => {
+    setIsDarkMode(prevMode => !prevMode);
+  };
+
   return (
-    <div className='bg-[#001529] justify-between shadow-md rounded-b-lg pr-4 flex items-center h-16 w-full' >
-      <a href="/">
+    <div className={`header-container ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      <a href="/" className="logo-container">
         <img
           src="/assets/gitamlogo.png"
           alt="Gitam Logo"
-          className="h-10 ml-4"
+          className="logo"
         />
       </a>
-      <h1 className='hidden xl:flex text-white text-2xl font-bold m-0'>
+      <h1 className="header-title">
         Gitam GitHub Community
       </h1>
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} >
+      <Menu theme={isDarkMode ? "dark" : "light"} mode="horizontal" defaultSelectedKeys={['1']} className="menu">
         {menuItems.map(item => (
-          <Menu.Item style={{borderRadius: "10px"}} key={item.key}>
+          <Menu.Item key={item.key} className="menu-item">
             <Link to={item.link}>{item.label}</Link>
           </Menu.Item>
         ))}
       </Menu>
-      <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className='ml-4'>
-        <GithubOutlined className='text-white text-2xl' />
+      <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="github-icon">
+        <GithubOutlined />
       </a>
+      <div className="toggle-container" onClick={toggleMode}>
+        <div className={`toggle ${isDarkMode ? 'toggle-dark' : 'toggle-light'}`}>
+          <div className="toggle-icon">
+            {isDarkMode ? <img src="https://cdn-icons-png.freepik.com/256/5084/5084268.png?semt=ais_hybrid" alt="Moon" /> : <img src="https://cdn-icons-png.freepik.com/256/6348/6348486.png?semt=ais_hybrid" alt="Sun" />}
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Header;
