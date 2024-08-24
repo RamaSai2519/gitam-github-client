@@ -1,0 +1,113 @@
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 64px;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+  
+.dark-mode {
+    background-color: #001529;
+    color: white;
+}
+  
+.light-mode {
+    background-color: #f0f0f0;
+    color: black;
+}
+  
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+  
+.logo {
+    height: 40px;
+}
+  
+.header-title {
+    display: none;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+  
+.menu {
+    flex-grow: 0;
+    display: flex;
+    justify-content: center;
+}
+  
+.menu-item {
+    border-radius: 0;
+    margin: 0 15px;
+    transition: transform 0.3s ease;
+    background-color: transparent !important;
+}
+.menu-item:hover, .menu-item-selected {
+    transform: translateY(-3px);
+    background-color: transparent !important;
+}
+  
+.github-icon {
+    font-size: 24px;
+    margin-left: 20px;
+}
+  
+.toggle-container {
+    margin-left: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.toggle {
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    transition: background-color 0.3s ease;
+    background-size: cover;
+}
+  
+.toggle-dark {
+    background-image: url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?cs=srgb&dl=pexels-jplenio-1103970.jpg&fm=jpg');
+}
+  
+.toggle-light {
+    background-image: url('https://t4.ftcdn.net/jpg/04/94/85/25/360_F_494852538_r8ylVApdAY0YuWYCkWIsg5pDZkboERYI.jpg');
+}
+  
+.toggle-icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: left 0.3s ease;
+}
+  
+.toggle-dark .toggle-icon {
+    left: 30px;
+}
+  
+.toggle-light .toggle-icon {
+    left: 0;
+}
+  
+.toggle-icon img {
+    width: 100%;
+    height: 100%;
+}
+  
+@media (min-width: 1200px) {
+    .header-title {
+      display: block;
+    }
+}

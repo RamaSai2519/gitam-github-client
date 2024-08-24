@@ -10,6 +10,7 @@ import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 import ResourcesPage from './pages/ResourcesPage';
 import TestimonialsPage from './pages/TestimonialsPage';
+import ThreeScene from './components/ThreeScene';  // Import the ThreeScene component
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -30,6 +31,7 @@ function App() {
               <Route path="/projects" element={<ProjectPage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/three" element={<ThreeScene />} /> {/* Add this route for the 3D scene */}
             </Routes>
           </div>
         </Content>
