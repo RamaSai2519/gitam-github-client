@@ -65,15 +65,19 @@ const quotes = [
 const HomePage = () => {
     return (
         <div className="bg-gray-100 min-h-screen w-full">
-            <div className="text-center">
-                <Carousel autoplay effect="fade">
+            <div className="relative w-full h-screen">
+                <Carousel autoplay effect="fade" className="absolute inset-0 w-full h-full">
                     {carouselItems.map((item, index) => (
                         <div key={index}>
-                            <img src={item.src} alt={item.alt} className="w-full h-64 object-cover rounded-lg" />
+                            <img 
+                                src={item.src} 
+                                alt={item.alt} 
+                                className="w-full h-full object-cover" 
+                            />
                         </div>
                     ))}
                 </Carousel>
-                <div className="py-8">
+                <div className="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-50">
                     <TypingEffect
                         text={['Welcome To GitHub Community!']}
                         speed={typingSpeed}
@@ -81,7 +85,7 @@ const HomePage = () => {
                         cursorRenderer={cursor => <b>{cursor}</b>}
                         className="text-3xl md:text-7xl font-bold"
                     />
-                    <Paragraph className="text-2xl mb-6">
+                    <Paragraph className="text-2xl mb-6 text-white">
                         Join us in our mission to foster growth, collaboration, and innovation through open-source projects and community engagement.
                     </Paragraph>
                     <Button type="primary" size="large" href="/resources" className="mb-4">
