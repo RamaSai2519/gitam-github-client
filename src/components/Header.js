@@ -15,8 +15,14 @@ const menuItems = [
 
 const Header = () => {
   return (
-    <div className='bg-[#001529] justify-between shadow-md rounded-b-lg pr-4 flex items-center h-16 w-full' >
-      <a href="/">
+    <div 
+      className='bg-transparent shadow-md rounded-b-lg pr-4 flex items-center h-16 w-full fixed top-0 left-0 z-50' 
+      style={{ 
+        backdropFilter: 'blur(10px)', 
+        backgroundColor: 'rgba(0, 0, 0, 0.3)' // Adjust transparency here
+      }}
+    >
+      <a href="/" className="flex items-center">
         <img
           src="/assets/gitamlogo.png"
           alt="Gitam Logo"
@@ -26,9 +32,9 @@ const Header = () => {
       <h1 className='hidden xl:flex text-white text-2xl font-bold m-0'>
         Gitam GitHub Community
       </h1>
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} >
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', marginLeft: 'auto' }}>
         {menuItems.map(item => (
-          <Menu.Item style={{borderRadius: "10px"}} key={item.key}>
+          <Menu.Item style={{ borderRadius: "10px" }} key={item.key}>
             <Link to={item.link}>{item.label}</Link>
           </Menu.Item>
         ))}
