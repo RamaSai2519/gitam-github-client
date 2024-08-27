@@ -28,7 +28,7 @@ const resources = [
     image: 'https://studio.uxpincdn.com/studio/wp-content/uploads/2022/11/Ant-Design.png.webp'
   },
   {
-    id: 4,
+    id: 4
     title: 'JavaScript Info',
     description: 'Modern JavaScript tutorial and guide.',
     link: 'https://javascript.info/',
