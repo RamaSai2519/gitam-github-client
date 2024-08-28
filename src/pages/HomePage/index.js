@@ -70,13 +70,13 @@ const HomePage = () => {
         <div className="bg-gray-100 min-h-screen w-full">
             {/* Full-Screen Carousel with Dark Overlay */}
             <div className="relative min-h-screen w-full">
-                <Carousel autoplay effect="fade" className="relative">
+                <Carousel autoplay autoplaySpeed={6000} className="relative">
                     {carouselItems.map((item, index) => (
                         <div key={index} className="relative">
-                            <img 
-                                src={item.src} 
-                                alt={item.alt} 
-                                className="w-full h-screen object-cover" 
+                            <img
+                                src={item.src}
+                                alt={item.alt}
+                                className="w-full h-screen object-cover"
                             />
                             {/* Dark Overlay */}
                             <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -85,20 +85,14 @@ const HomePage = () => {
                 </Carousel>
 
                 {/* Text Overlay on Image */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center text-white">
-                    <TypingEffect
-                        text={['Welcome To GitHub Community Club!']}
-                        speed={typingSpeed}
-                        typingDelay={500}
-                        cursorRenderer={cursor => <b>{cursor}</b>}
-                        className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4"
-                    />
-                    <Paragraph className="text-xl md:text-2xl lg:text-3xl mb-6 font-bold text-white">
-    Join us in our mission to foster growth, collaboration, and innovation through open-source projects and community engagement.
-</Paragraph>
-<Button type="primary" size="large" href="/resources">
-    Explore Resources
-</Button>
+                <div className="absolute p-5 inset-0 flex flex-col items-center justify-center text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-white">
+                    <h1 className='text-center'>Welcome To GitHub Community Club!</h1>
+                    <p className="text-center text-xl md:text-2xl lg:text-3xl mb-6 font-bold text-white">
+                        Join us in our mission to foster growth, collaboration, and innovation through open-source projects and community engagement.
+                    </p>
+                    <Button type="primary" size="large" href="/resources">
+                        Explore Resources
+                    </Button>
 
                 </div>
             </div>
