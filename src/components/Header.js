@@ -1,7 +1,9 @@
 import React from 'react';
-import { Menu } from 'antd';
+import { ConfigProvider, Menu } from 'antd';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { GithubOutlined } from '@ant-design/icons';
+import useScrollPosition from '../utils/useScrollPosition';
 
 const menuItems = [
   { key: '1', link: '/', label: 'Home' },
@@ -14,29 +16,44 @@ const menuItems = [
 ];
 
 const Header = () => {
+  const location = useLocation();
+  const route = location.pathname;
+  const { scrolled100vh } = useScrollPosition();
+  const tintedHeader = scrolled100vh || route !== "/";
+
   return (
-    <div className='bg-[#001529] justify-between shadow-md rounded-b-lg pr-4 flex items-center h-16 w-full' >
-      <a href="/">
-        <img
-          src="/assets/gitamlogo.png"
-          alt="Gitam Logo"
-          className="h-10 ml-4"
-        />
-      </a>
-      <h1 className='hidden xl:flex text-white text-2xl font-bold m-0'>
-        Gitam GitHub Community
-      </h1>
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} >
-        {menuItems.map(item => (
-          <Menu.Item style={{borderRadius: "10px"}} key={item.key}>
-            <Link to={item.link}>{item.label}</Link>
-          </Menu.Item>
-        ))}
-      </Menu>
-      <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className='ml-4'>
-        <GithubOutlined className='text-white text-2xl' />
-      </a>
-    </div>
+    <ConfigProvider
+      theme={{
+        components: {
+          Menu: {
+            darkItemBg: 'transparent',
+            darkItemSelectedBg: 'transparent',
+          },
+        },
+      }}
+    >
+      <div
+        className={`${route == '/' ? 'fixed' : "sticky"} ${tintedHeader ? "bg-[#1A4A4A] shadow-md" : "bg-[transparent]"} rounded-b-lg pr-4 flex items-center h-16 w-full fixed top-0 left-0 z-50`}
+      >
+        <a href="/" className="flex items-center">
+          <img
+            src="/assets/gitamlogo.png"
+            alt="Gitam Logo"
+            className="h-10 ml-4"
+          />
+        </a>
+        <Menu theme='dark' mode="horizontal" defaultSelectedKeys={['1']} className='ml-auto bg-transparent'>
+          {menuItems.map(item => (
+            <Menu.Item key={item.key}>
+              <Link to={item.link}><span className='text-white'>{item.label}</span></Link>
+            </Menu.Item>
+          ))}
+        </Menu>
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className='ml-4'>
+          <GithubOutlined className='text-white text-2xl' />
+        </a>
+      </div>
+    </ConfigProvider>
   );
 }
 

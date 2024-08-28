@@ -1,6 +1,9 @@
 import React from 'react';
 import TypingEffect from 'react-typing-effect';
-import { Button, Card, Col, Row, Typography, Carousel } from 'antd';
+import { Button, Typography, Carousel, Card, Col, Row } from 'antd';
+import ResourcesPage from '../ResourcesPage';
+import ProjectPage from '../ProjectPage';
+import TeamPage from '../TeamPage';
 
 const { Title, Paragraph } = Typography;
 
@@ -65,28 +68,32 @@ const quotes = [
 const HomePage = () => {
     return (
         <div className="bg-gray-100 min-h-screen w-full">
-            <div className="text-center">
-                <Carousel autoplay effect="fade">
+            {/* Full-Screen Carousel with Dark Overlay */}
+            <div className="relative min-h-screen w-full">
+                <Carousel autoplay autoplaySpeed={6000} className="relative">
                     {carouselItems.map((item, index) => (
-                        <div key={index}>
-                            <img src={item.src} alt={item.alt} className="w-full h-64 object-cover rounded-lg" />
+                        <div key={index} className="relative">
+                            <img
+                                src={item.src}
+                                alt={item.alt}
+                                className="w-full h-screen object-cover"
+                            />
+                            {/* Dark Overlay */}
+                            <div className="absolute inset-0 bg-black opacity-50"></div>
                         </div>
                     ))}
                 </Carousel>
-                <div className="py-8">
-                    <TypingEffect
-                        text={['Welcome To GitHub Community!']}
-                        speed={typingSpeed}
-                        typingDelay={500}
-                        cursorRenderer={cursor => <b>{cursor}</b>}
-                        className="text-3xl md:text-7xl font-bold"
-                    />
-                    <Paragraph className="text-2xl mb-6">
+
+                {/* Text Overlay on Image */}
+                <div className="absolute p-5 inset-0 flex flex-col items-center justify-center text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-white">
+                    <h1 className='text-center'>Welcome To GitHub Community Club!</h1>
+                    <p className="text-center text-xl md:text-2xl lg:text-3xl mb-6 font-bold text-white">
                         Join us in our mission to foster growth, collaboration, and innovation through open-source projects and community engagement.
-                    </Paragraph>
-                    <Button type="primary" size="large" href="/resources" className="mb-4">
+                    </p>
+                    <Button type="primary" size="large" href="/resources">
                         Explore Resources
                     </Button>
+
                 </div>
             </div>
 
@@ -167,6 +174,10 @@ const HomePage = () => {
                     </Button>
                 </div>
             </div>
+            <ResourcesPage />
+            <ProjectPage />
+            <TeamPage />
+
 
             {/* GitHub Section */}
             <div className="p-8 text-center">

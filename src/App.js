@@ -21,7 +21,7 @@ function App() {
       <Layout>
         <Header /> {/* Header is included here to be consistent across all pages */}
         <Content>
-          <div className="w-full p-5">
+          <div className="w-full">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/team" element={<TeamPage />} />
