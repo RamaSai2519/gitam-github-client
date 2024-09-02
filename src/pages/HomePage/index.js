@@ -1,5 +1,4 @@
 import React from 'react';
-import TypingEffect from 'react-typing-effect';
 import { Button, Typography, Carousel, Card, Col, Row } from 'antd';
 import ResourcesPage from '../ResourcesPage';
 import ProjectPage from '../ProjectPage';
@@ -29,8 +28,6 @@ const carouselItems = [
         alt: 'GitHub Open Source',
     },
 ];
-
-const typingSpeed = 100;
 
 const quotes = [
     {
