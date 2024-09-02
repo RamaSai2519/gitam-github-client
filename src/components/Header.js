@@ -20,7 +20,7 @@ const Header = () => {
   const route = location.pathname;
   const { scrolled100vh } = useScrollPosition();
   const tintedHeader = scrolled100vh || route !== "/";
-
+  if (route === "/test") return null;
   return (
     <ConfigProvider
       theme={{
