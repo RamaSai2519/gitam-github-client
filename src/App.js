@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import { Layout } from 'antd';
+import TestPage from './pages/Test';
 import TeamPage from './pages/TeamPage';
 import HomePage from './pages/HomePage';
 import Header from './components/Header';
@@ -19,7 +20,7 @@ function App() {
   return (
     <Router>
       <Layout>
-        <Header /> {/* Header is included here to be consistent across all pages */}
+        <Header /> 
         <Content>
           <div className="w-full">
             <Routes>
@@ -30,6 +31,7 @@ function App() {
               <Route path="/projects" element={<ProjectPage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/test" element={<TestPage />} />
             </Routes>
           </div>
         </Content>
