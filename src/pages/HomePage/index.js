@@ -8,6 +8,10 @@ const { Title, Paragraph } = Typography;
 
 const carouselItems = [
     {
+        src: 'https://media.licdn.com/dms/image/v2/C4D12AQFt3PVoxjvBeQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1612776307084?e=2147483647&v=beta&t=KXaYFtGbMwMqjF6LUxnAc-keQs8mC5eBydeh-0Fa4ww',
+        alt: 'GitHub Open Source',
+    },
+    {
         src: 'https://www.seozen.top/wp-content/uploads/2021/05/GitHub-headpic.jpeg',
         alt: 'Open Source Community',
     },
@@ -22,10 +26,6 @@ const carouselItems = [
     {
         src: 'https://event-sponsorship.github.com/assets/images/hero-bg-23.jpeg',
         alt: 'GitHub Universe',
-    },
-    {
-        src: 'https://media.licdn.com/dms/image/v2/C4D12AQFt3PVoxjvBeQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1612776307084?e=2147483647&v=beta&t=KXaYFtGbMwMqjF6LUxnAc-keQs8mC5eBydeh-0Fa4ww',
-        alt: 'GitHub Open Source',
     },
 ];
 

@@ -16,11 +16,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const { Content } = Layout;
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Layout>
-        <Header /> 
+        <Header />
         <Content>
           <div className="w-full">
             <Routes>
