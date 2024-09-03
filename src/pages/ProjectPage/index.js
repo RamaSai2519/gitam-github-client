@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
+import { useLocation } from 'react-router-dom';
 
 const projects = [
   {
@@ -23,9 +24,11 @@ const projects = [
   },
 ];
 
-function ProjectPage() {
+const ProjectPage = () => {
+  const location = useLocation();
+  const route = location.pathname;
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className={`flex flex-col ${route !== "/" ? "min-h-screen" : ""}`}>
       <div>
         <h2 className="text-4xl font-bold text-center mb-12">Our Projects</h2>
         <div className='grid md:grid-cols-3 gap-5'>

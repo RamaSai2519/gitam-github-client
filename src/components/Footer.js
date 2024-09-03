@@ -11,92 +11,59 @@ const Footer = () => {
   const handleEmailSubmit = () => {
     if (email) {
       message.success(`Thank you for joining us, ${email}!`);
-      setEmail(''); 
+      setEmail('');
     } else {
       message.error('Please enter a valid email!');
     }
   };
 
   return (
-    <AntFooter
-      style={{
-        background: '#000000', 
-        color: '#ffffff', 
-        padding: '40px 20px',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-        }}
-      >
+    <AntFooter className="bg-black text-white py-10 bottom-0 left-0">
+      <div className="max-w-7xl mx-auto flex justify-between items-center flex-wrap">
         {/* Left side - Logo and Club Info */}
-        <div style={{ flex: 1, minWidth: '200px', marginBottom: '20px', display: 'flex', alignItems: 'center' }}>
+        <div className="flex-1 min-w-0 mb-5 flex items-center">
           {/* GitHub Logo */}
           <img
             src="https://icon-library.com/images/github-logo-icon/github-logo-icon-29.jpg"
             alt="GitHub Logo"
-            style={{ width: '120px', marginRight: '15px' }} 
+            className="w-24 mr-5"
           />
-          
+
           {/* Club Info */}
           <div>
-            <Text
-              style={{
-                fontSize: '22px', 
-                fontWeight: 'bold',
-                color: '#00FFFF', 
-              }}
-            >
+            <Text className="text-2xl font-bold text-cyan-500">
               "Where Innovation Meets Collaboration"
             </Text>
-            <div style={{ marginTop: '10px' }}>
-              <a href="mailto:github_community@gitam.in" style={{ color: '#ffffff', textDecoration: 'underline' }}>
+            <div className="mt-2">
+              <a href="mailto:github_community@gitam.in" className="text-white underline">
                 github_community@gitam.in
               </a>
-              <p style={{ margin: '5px 0', color: '#ffffff' }}>Gitam University, Bengaluru</p>
+              <p className="mt-1 text-white">Gitam University, Bengaluru</p>
             </div>
           </div>
         </div>
 
         {/* Center - Email Signup */}
-        <div style={{ flex: 1, minWidth: '200px', textAlign: 'center', marginBottom: '20px' }}>
-          <Text style={{ fontSize: '16px', marginBottom: '10px', display: 'block', color: '#ffffff' }}>
-            Join our GitHub Community.!
-          </Text>
+        <div className="flex-1 min-w-0 text-center mb-5">
+          <Text className="text-lg mb-2 block text-white">Join our GitHub Community!</Text>
           <Input
             type="email"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={{
-              maxWidth: '300px',
-              marginRight: '10px',
-              borderColor: '#ffffff',
-              backgroundColor: '#333333',
-              color: '#ffffff',
-            }}
-            placeholderStyle={{ color: '#aaaaaa' }} 
+            className="max-w-xs mr-2 border-white bg-gray-800 text-white"
+            placeholderStyle={{ color: '#aaaaaa' }}
           />
           <Button
             onClick={handleEmailSubmit}
-            style={{
-              color: '#ffffff',
-              backgroundColor: '#000000',
-              borderColor: '#ffffff',
-            }}
+            className="text-white bg-black border-white"
           >
             Join Us
           </Button>
         </div>
 
         {/* Right side - Social Links & CTA */}
-        <div style={{ flex: 1, minWidth: '200px', marginBottom: '20px', textAlign: 'right' }}>
+        <div className="flex-1 min-w-0 mb-5 text-right">
           <Space size="large">
             <a href="https://github.com/github-community-gitam/" target="_blank" rel="noopener noreferrer">
               <GithubOutlined style={{ fontSize: '24px', color: '#ffffff' }} />
@@ -113,23 +80,16 @@ const Footer = () => {
           </Space>
 
           {/* Call to Action Button */}
-          <div style={{ marginTop: '20px' }}>
+          <div className="mt-5">
             <a
               href="https://github.com/your-repo"
-              style={{
-                color: '#ffffff',
-                backgroundColor: '#000000',
-                padding: '10px 20px',
-                borderRadius: '5px',
-                textDecoration: 'none',
-                border: '1px solid #ffffff',
-              }}
+              className="text-white bg-black px-4 py-2 rounded-md text-decoration-none border border-white"
             >
               Contribute Now
             </a>
           </div>
 
-          <p style={{ color: '#ffffff', marginTop: '10px', fontSize: '14px' }}>
+          <p className="text-white mt-5 text-sm">
             © 2024 GitHub Community Club. All rights reserved.
           </p>
         </div>
