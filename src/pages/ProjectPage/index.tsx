@@ -1,9 +1,16 @@
 import React from 'react';
 import { Card, Button } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  link: string;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: 'Emotion Detection using CNN',
@@ -19,21 +26,23 @@ const projects = [
   {
     id: 3,
     title: 'Code camp',
-    description: 'freeCodeCamp is a  open-source codebase and curriculum,Learn to code for free.',
+    description: 'freeCodeCamp is a open-source codebase and curriculum, Learn to code for free.',
     link: 'https://github.com/freeCodeCamp/freeCodeCamp',
   },
 ];
 
-const ProjectPage = () => {
-  const location = useLocation();
-  const route = location.pathname;
+const ProjectPage: React.FC = () => {
+  const router = useRouter();
+  const route = router.pathname;
+
   return (
     <div className={`flex flex-col ${route !== "/" ? "min-h-screen" : ""}`}>
       <div>
         <h2 className="text-4xl font-bold text-center mb-12">Our Projects</h2>
-        <div className='grid md:grid-cols-3 gap-5'>
+        <div className="grid md:grid-cols-3 gap-5">
           {projects.map(project => (
             <Card
+              key={project.id}
               title={project.title}
               bordered={false}
               extra={

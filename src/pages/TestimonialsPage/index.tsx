@@ -2,9 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Card, Rate, Divider, Modal } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import Confetti from 'react-confetti';
-import './TestimonialsPage.css'; 
 
-const testimonials = [
+interface Testimonial {
+  id: number;
+  name: string;
+  role: string;
+  message: string;
+  rating: number;
+  detailedReview: string;
+}
+
+const testimonials: Testimonial[] = [
   {
     id: 1,
     name: 'Sumayya',
@@ -79,11 +87,11 @@ const testimonials = [
   },
 ];
 
-function TestimonialPage() {
-  const [selectedTestimonial, setSelectedTestimonial] = useState(null);
+const TestimonialPage: React.FC = () => {
+  const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  const handleCardClick = (testimonial) => {
+  const handleCardClick = (testimonial: Testimonial) => {
     setSelectedTestimonial(testimonial);
     setShowConfetti(true);
   };
@@ -97,15 +105,14 @@ function TestimonialPage() {
     if (showConfetti) {
       const timer = setTimeout(() => {
         setShowConfetti(false);
-      }, 3000); 
+      }, 3000);
 
-      return () => clearTimeout(timer); 
+      return () => clearTimeout(timer);
     }
   }, [showConfetti]);
 
   return (
     <div className="relative p-8">
-      {/* Confetti Effect */}
       {showConfetti && (
         <Confetti
           className="absolute top-0 left-0 w-full h-full z-50"
@@ -114,14 +121,12 @@ function TestimonialPage() {
         />
       )}
 
-      {/* Heading */}
-      <div className="heading-container">
-        <h2 className="heading-effect">
-        Voices of Our Community.!
+      <div className="flex justify-center items-center mb-4">
+        <h2 className="relative text-4xl font-bold text-center bg-gradient-to-r from-blue-500 to-yellow-500 bg-clip-text text-transparent">
+          Voices of Our Community!
         </h2>
       </div>
 
-      {/* Testimonials Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {testimonials.map((testimonial) => (
           <Card
@@ -147,7 +152,6 @@ function TestimonialPage() {
         ))}
       </div>
 
-      {/* Detailed Review Modal */}
       <Modal
         open={!!selectedTestimonial}
         footer={null}
@@ -173,6 +177,6 @@ function TestimonialPage() {
       </Modal>
     </div>
   );
-}
+};
 
 export default TestimonialPage;

@@ -6,22 +6,34 @@
     "@vercel/speed-insights": "^1.0.12",
     "antd": "^5.18.1",
     "axios": "^1.7.2",
+    "next": "^14.2.9",
     "react": "^18.3.1",
     "react-confetti": "^6.1.0",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1",
-    "react-scripts": "5.0.1",
-    "source-map-explorer": "^2.5.3"
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-syntax-decimal": "^7.24.7",
+    "@types/file-saver": "^2.0.7",
+    "@types/node": "^22.5.4",
+    "@types/react": "^18.3.5",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.6.2"
   },
   "scripts": {
-    "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "analyze": "source-map-explorer 'out/static/js/*.js'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
+      "next/core-web-vitals",
       "react-app",
       "react-app/jest"
     ],
@@ -48,14 +60,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/plugin-syntax-decimal": "^7.24.7",
-    "@types/file-saver": "^2.0.7",
-    "@types/react": "^18.3.5",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.4"
   }
 }

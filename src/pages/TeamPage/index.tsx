@@ -3,7 +3,15 @@ import { Card } from 'antd';
 
 const { Meta } = Card;
 
-const teamMembers = [
+interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  bio: string;
+  photo: string;
+}
+
+const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: 'L E Chakrawarthy Sreenivas',
@@ -22,7 +30,7 @@ const teamMembers = [
     id: 3,
     name: 'Deeksha Dakshayini',
     role: 'Secretary',
-    bio: 'Deeksha handles all internal communications and documentation for the Gitam GitHub Community. She ensures that all records are maintained accurately and that communications are clear and timely. Her organizational skills help keep the team aligned and informed.And responsible for the outlook of the club.',
+    bio: 'Deeksha handles all internal communications and documentation for the Gitam GitHub Community. She ensures that all records are maintained accurately and that communications are clear and timely. Her organizational skills help keep the team aligned and informed. And responsible for the outlook of the club.',
     photo: '/assets/Secretary.jpg'
   },
   {
@@ -41,17 +49,18 @@ const teamMembers = [
   },
 ];
 
-function TeamPage() {
+const TeamPage: React.FC = () => {
   return (
     <div className="p-10">
       <h1 className="text-center text-2xl mb-10">Meet Our Team</h1>
       <div className='grid md:grid-cols-3 gap-4'>
         {teamMembers.map(member => (
           <Card
+            key={member.id}
             hoverable
             cover={
               <div className="md:h-60 overflow-hidden rounded-lg flex items-center justify-center p-1">
-                <img alt={member.name} src={member.photo} />
+                <img alt={member.name} src={member.photo} className="object-cover h-full w-full" />
               </div>
             }
             className="rounded-lg shadow-md flex flex-col"
