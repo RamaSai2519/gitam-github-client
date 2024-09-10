@@ -9,7 +9,8 @@ const Footer = () => {
   const [email, setEmail] = useState('');
 
   const handleEmailSubmit = () => {
-    if (email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailPattern.test(email)) {
       message.success(`Thank you for joining us, ${email}!`);
       setEmail('');
     } else {
@@ -19,17 +20,14 @@ const Footer = () => {
 
   return (
     <AntFooter className="bg-black text-white py-10 bottom-0 left-0">
-      <div className="max-w-7xl mx-auto flex justify-between items-center flex-wrap">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center flex-wrap">
         {/* Left side - Logo and Club Info */}
         <div className="flex-1 min-w-0 mb-5 flex items-center">
-          {/* GitHub Logo */}
           <img
             src="https://icon-library.com/images/github-logo-icon/github-logo-icon-29.jpg"
             alt="GitHub Logo"
             className="w-24 mr-5"
           />
-
-          {/* Club Info */}
           <div>
             <Text className="text-2xl font-bold text-cyan-500">
               "Where Innovation Meets Collaboration"
@@ -52,30 +50,29 @@ const Footer = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="max-w-xs mr-2 border-white bg-gray-800 text-white"
-            placeholderStyle={{ color: '#aaaaaa' }}
           />
           <Button
             onClick={handleEmailSubmit}
-            className="text-white bg-black border-white"
+            className="text-white bg-black border-white hover:bg-gray-700 transition duration-300"
           >
             Join Us
           </Button>
         </div>
 
         {/* Right side - Social Links & CTA */}
-        <div className="flex-1 min-w-0 mb-5 text-right">
+        <div className="flex-1 min-w-0 mb-5 text-center md:text-right">
           <Space size="large">
-            <a href="https://github.com/github-community-gitam/" target="_blank" rel="noopener noreferrer">
-              <GithubOutlined style={{ fontSize: '24px', color: '#ffffff' }} />
+            <a href="https://github.com/github-community-gitam/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <GithubOutlined className="text-white text-2xl hover:text-cyan-500 transition duration-300" />
             </a>
-            <a href="https://www.linkedin.com/company/github-gitam/" target="_blank" rel="noopener noreferrer">
-              <LinkedinOutlined style={{ fontSize: '24px', color: '#ffffff' }} />
+            <a href="https://www.linkedin.com/company/github-gitam/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <LinkedinOutlined className="text-white text-2xl hover:text-cyan-500 transition duration-300" />
             </a>
-            <a href="https://www.instagram.com/github.gitamblr/" target="_blank" rel="noopener noreferrer">
-              <InstagramOutlined style={{ fontSize: '24px', color: '#ffffff' }} />
+            <a href="https://www.instagram.com/github.gitamblr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <InstagramOutlined className="text-white text-2xl hover:text-cyan-500 transition duration-300" />
             </a>
-            <a href="https://chat.whatsapp.com/Jj5RSGcD3TBBBZSCq8WAuO" target="_blank" rel="noopener noreferrer">
-              <WhatsAppOutlined style={{ fontSize: '24px', color: '#ffffff' }} />
+            <a href="https://chat.whatsapp.com/Jj5RSGcD3TBBBZSCq8WAuO" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <WhatsAppOutlined className="text-white text-2xl hover:text-cyan-500 transition duration-300" />
             </a>
           </Space>
 
@@ -83,7 +80,7 @@ const Footer = () => {
           <div className="mt-5">
             <a
               href="https://github.com/your-repo"
-              className="text-white bg-black px-4 py-2 rounded-md text-decoration-none border border-white"
+              className="text-white bg-black px-4 py-2 rounded-md text-decoration-none border border-white hover:bg-gray-700 transition duration-300"
             >
               Contribute Now
             </a>
