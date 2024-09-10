@@ -33,7 +33,7 @@ const Header = () => {
       }}
     >
       <div
-        className={`${route == '/' ? 'fixed' : "sticky"} ${tintedHeader ? "bg-[#1A4A4A] shadow-md" : "bg-[transparent]"} rounded-b-lg pr-4 flex items-center h-16 w-full fixed top-0 left-0 z-50`}
+        className={`${route === '/' ? 'fixed' : "sticky"} ${tintedHeader ? "bg-[#1A4A4A] shadow-md" : "bg-[transparent]"} rounded-b-lg pr-4 flex items-center h-16 w-full fixed top-0 left-0 z-50`}
       >
         <a href="/" className="flex items-center">
           <img

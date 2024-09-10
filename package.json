@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-three/fiber": "^8.17.6",
     "@vercel/speed-insights": "^1.0.12",
     "antd": "^5.18.1",
     "axios": "^1.7.2",
@@ -12,7 +13,8 @@
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "react-typing-effect": "^2.0.5",
-    "source-map-explorer": "^2.5.3"
+    "source-map-explorer": "^2.5.3",
+    "three": "^0.168.0"
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",

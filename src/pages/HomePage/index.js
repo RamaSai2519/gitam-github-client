@@ -4,6 +4,7 @@ import { Button, Typography, Carousel, Card, Col, Row } from 'antd';
 import ResourcesPage from '../ResourcesPage';
 import ProjectPage from '../ProjectPage';
 import TeamPage from '../TeamPage';
+import ThreeScene from '../ThreeScene';
 
 const { Title, Paragraph } = Typography;
 
