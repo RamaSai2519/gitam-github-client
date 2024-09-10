@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Typography, Carousel, Card, Col, Row } from 'antd';
 import ResourcesPage from '../ResourcesPage';
 import ProjectPage from '../ProjectPage';
 import TeamPage from '../TeamPage';
+import raxios from '../../utils/axios_helper';
 
 const { Title, Paragraph } = Typography;
 
@@ -29,40 +30,25 @@ const carouselItems = [
     },
 ];
 
-const quotes = [
-    {
-        text: "GitHub has been an incredible platform for me to collaborate with developers around the world. It's a game-changer for open-source contributions.",
-        author: "Linus Torvalds",
-        title: "Creator of Linux",
-    },
-    {
-        text: "GitHub provided me the tools to manage my open-source projects efficiently and connect with a global community of developers.",
-        author: "Scott Hanselman",
-        title: "Software Engineer & Advocate",
-    },
-    {
-        text: "GitHub is where I found the collaboration and support I needed to advance my career and contribute to meaningful projects.",
-        author: "Jessica McKellar",
-        title: "Open Source Advocate & Software Engineer",
-    },
-    {
-        text: "The power of open-source collaboration is amplified by platforms like GitHub. It’s been crucial for my professional growth.",
-        author: "Matt Mullenweg",
-        title: "Co-Founder of WordPress",
-    },
-    {
-        text: "GitHub has enabled me to share my work with the world and collaborate with other passionate developers.",
-        author: "Evan You",
-        title: "Creator of Vue.js",
-    },
-    {
-        text: "GitHub has transformed the way I approach open-source development and collaboration with others in the tech community.",
-        author: "Brendan Eich",
-        title: "Creator of JavaScript",
-    },
-];
+
 
 const HomePage = () => {
+    const [quotes, setQuotes] = useState([]);
+
+    const fetchQuotes = async () => {
+        try {
+            const response = await raxios.get('/quotes');
+            setQuotes(response.data.data);
+        } catch (error) {
+            console.error(error);
+
+        }
+    };
+
+    useEffect(() => {
+        fetchQuotes();
+    }, []);
+
     return (
         <div className="bg-gray-100 min-h-screen w-full">
             {/* Full-Screen Carousel with Dark Overlay */}
@@ -98,42 +84,22 @@ const HomePage = () => {
             <div className="p-8">
                 <Title level={2} className="text-center mb-8">What We Do</Title>
                 <Row gutter={[16, 16]} justify="center">
-                    <Col xs={24} sm={12} md={8}>
-                        <Card
-                            title="Collaborate"
-                            bordered={false}
-                            className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
-                            cover={<img alt="Collaborate" src="/assets/cooperate-svgrepo-com.svg" className="w-16 h-16 mx-auto mt-4" />}
-                        >
-                            <Paragraph>
-                                Engage with like-minded individuals on various projects and initiatives to make an impact through open-source contributions.
-                            </Paragraph>
-                        </Card>
-                    </Col>
-                    <Col xs={24} sm={12} md={8}>
-                        <Card
-                            title="Learn"
-                            bordered={false}
-                            className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
-                            cover={<img alt="Learn" src="/assets/elearning-education-learn-svgrepo-com.svg" className="w-16 h-16 mx-auto mt-4" />}
-                        >
-                            <Paragraph>
-                                Access a wealth of resources, tutorials, and workshops to enhance your skills and stay updated with the latest in technology.
-                            </Paragraph>
-                        </Card>
-                    </Col>
-                    <Col xs={24} sm={12} md={8}>
-                        <Card
-                            title="Network"
-                            bordered={false}
-                            className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
-                            cover={<img alt="Network" src='/assets/network-group-svgrepo-com.svg' className="w-16 h-16 mx-auto mt-4" />}
-                        >
-                            <Paragraph>
-                                Connect with industry professionals, mentors, and peers to expand your network and collaborate on exciting projects.
-                            </Paragraph>
-                        </Card>
-                    </Col>
+                    {[
+                        { title: "Collaborate", img: "/assets/cooperate-svgrepo-com.svg", description: "Engage with like-minded individuals on various projects and initiatives to make an impact through open-source contributions." },
+                        { title: "Learn", img: "/assets/elearning-education-learn-svgrepo-com.svg", description: "Access a wealth of resources, tutorials, and workshops to enhance your skills and stay updated with the latest in technology." },
+                        { title: "Network", img: "/assets/network-group-svgrepo-com.svg", description: "Connect with industry professionals, mentors, and peers to expand your network and collaborate on exciting projects." }
+                    ].map((item, index) => (
+                        <Col xs={24} sm={12} md={8} key={index}>
+                            <Card
+                                title={item.title}
+                                bordered={false}
+                                className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
+                                cover={<img alt={item.title} src={item.img} className="w-16 h-16 mx-auto mt-4" />}
+                            >
+                                <Paragraph>{item.description}</Paragraph>
+                            </Card>
+                        </Col>
+                    ))}
                 </Row>
             </div>
 
