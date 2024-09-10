@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Navbar: React.FC = () => {
   return (
-    <nav style={{ backgroundColor: '#001529', padding: '0 50px' }}>
+    <nav className="navbar">
       <Menu
         mode="horizontal"
         theme="dark"

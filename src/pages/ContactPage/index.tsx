@@ -47,9 +47,9 @@ const ContactPage: React.FC = () => {
           </div>
 
           <div className="flex gap-4 mt-8">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-2xl text-gray-600 hover:text-blue-500 transition-colors"><TwitterOutlined /></a>
-            <a href="https://www.instagram.com/github.gitamblr/" target="_blank" rel="noopener noreferrer" className="text-2xl text-gray-600 hover:text-blue-500 transition-colors"><InstagramOutlined /></a>
-            <a href="https://www.linkedin.com/company/github-gitam" target="_blank" rel="noopener noreferrer" className="text-2xl text-gray-600 hover:text-blue-500 transition-colors"><LinkedinOutlined /></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter" className="text-2xl text-gray-600 hover:text-blue-500 transition-colors"><TwitterOutlined /></a>
+            <a href="https://www.instagram.com/github.gitamblr/" target="_blank" rel="noopener noreferrer" title="Instagram" className="text-2xl text-gray-600 hover:text-blue-500 transition-colors"><InstagramOutlined /></a>
+            <a href="https://www.linkedin.com/company/github-gitam" target="_blank" rel="noopener noreferrer" title="LinkedIn" className="text-2xl text-gray-600 hover:text-blue-500 transition-colors"><LinkedinOutlined /></a>
           </div>
         </div>
 

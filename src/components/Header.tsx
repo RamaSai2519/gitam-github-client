@@ -55,7 +55,7 @@ const Header: React.FC = () => {
           {menuItems.map((item) => (
             <Menu.Item key={item.key} className="hover:bg-gray-200 rounded-lg">
               <Link href={item.link} passHref>
-                <a
+                <a title="GitHub" 
                   className={`${
                     tintedHeader ? 'text-black' : 'text-white'
                   } font-semibold`}
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
             </Menu.Item>
           ))}
         </Menu>
-        <a
+        <a title="Gitam Logo"
           href="https://github.com/"
           target="_blank"
           rel="noopener noreferrer"
