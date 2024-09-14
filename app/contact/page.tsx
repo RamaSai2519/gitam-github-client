@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { Form, Input, Button, Card, Collapse } from 'antd';
 import { TwitterOutlined, InstagramOutlined, LinkedinOutlined } from '@ant-design/icons';

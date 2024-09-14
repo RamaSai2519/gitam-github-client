@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+"use client";
+
 import { Button, Typography, Carousel, Card, Col, Row } from 'antd';
-import ResourcesPage from '../ResourcesPage';
-import ProjectPage from '../ProjectPage';
-import TeamPage from '../TeamPage';
-import raxios from '../../utils/axios_helper';
+import React, { useState, useEffect } from 'react';
+import raxios from './../utils/axios_helper';
+import ResourcesPage from './resources/page';
+import ProjectPage from './projects/page';
+import TeamPage from './team/page';
 
 const { Title, Paragraph } = Typography;
 

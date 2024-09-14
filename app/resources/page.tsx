@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { Card, Col, Row, Typography, Divider } from 'antd';
 import { YoutubeOutlined, BookOutlined } from '@ant-design/icons';

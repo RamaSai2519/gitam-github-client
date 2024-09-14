@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { GithubOutlined } from '@ant-design/icons';
 import useScrollPosition from '../utils/useScrollPosition';
+import { usePathname } from 'next/navigation';
 
 interface MenuItem {
   key: string;
@@ -22,8 +23,7 @@ const menuItems: MenuItem[] = [
 ];
 
 const Header: React.FC = () => {
-  const router = useRouter();
-  const route = router.pathname;
+  const route = usePathname();
   const { scrolled100vh } = useScrollPosition();
   const tintedHeader = scrolled100vh || route !== "/";
   if (route === "/test") return null;
@@ -31,20 +31,16 @@ const Header: React.FC = () => {
   return (
     <ConfigProvider>
       <div
-        className={`${
-          route === '/' ? 'fixed' : 'sticky'
-        } ${
-          tintedHeader ? 'bg-white shadow-lg' : 'bg-transparent'
-        } pr-4 flex items-center h-16 w-full top-0 left-0 z-50 transition-all duration-300 ease-in-out`}
+        className={`${route === '/' ? 'fixed' : 'sticky'
+          } ${tintedHeader ? 'bg-white shadow-lg' : 'bg-transparent'
+          } pr-4 flex items-center h-16 w-full top-0 left-0 z-50 transition-all duration-300 ease-in-out`}
       >
-        <Link href="/" passHref>
-          <a className="flex items-center">
-            <img
-              src="/assets/gitamlogo.png"
-              alt="Gitam Logo"
-              className="h-10 ml-4 transform transition-transform duration-500 hover:scale-110"
-            />
-          </a>
+        <Link href="/" passHref className="flex items-center">
+          <img
+            src="/assets/gitamlogo.png"
+            alt="Gitam Logo"
+            className="h-10 ml-4 transform transition-transform duration-500 hover:scale-110"
+          />
         </Link>
         <Menu
           theme="light"
@@ -54,14 +50,8 @@ const Header: React.FC = () => {
         >
           {menuItems.map((item) => (
             <Menu.Item key={item.key} className="hover:bg-gray-200 rounded-lg">
-              <Link href={item.link} passHref>
-                <a title="GitHub" 
-                  className={`${
-                    tintedHeader ? 'text-black' : 'text-white'
-                  } font-semibold`}
-                >
-                  {item.label}
-                </a>
+              <Link href={item.link} passHref className={`${tintedHeader ? 'text-black' : 'text-white'} font-semibold`}>
+                {item.label}
               </Link>
             </Menu.Item>
           ))}
@@ -73,9 +63,8 @@ const Header: React.FC = () => {
           className="ml-4"
         >
           <GithubOutlined
-            className={`${
-              tintedHeader ? 'text-black' : 'text-white'
-            } text-2xl transform transition-transform duration-500 hover:scale-125`}
+            className={`${tintedHeader ? 'text-black' : 'text-white'
+              } text-2xl transform transition-transform duration-500 hover:scale-125`}
           />
         </a>
       </div>

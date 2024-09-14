@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { Card, Rate, Divider, Modal } from 'antd';
 import { UserOutlined } from '@ant-design/icons';

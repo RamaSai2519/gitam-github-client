@@ -1,7 +1,9 @@
+"use client";
+
 import React from 'react';
 import { Card, Button } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/router';
+import { usePathname } from "next/navigation";
 
 interface Project {
   id: number;
@@ -32,8 +34,7 @@ const projects: Project[] = [
 ];
 
 const ProjectPage: React.FC = () => {
-  const router = useRouter();
-  const route = router.pathname;
+  const route = usePathname();
 
   return (
     <div className={`flex flex-col ${route !== "/" ? "min-h-screen" : ""}`}>
