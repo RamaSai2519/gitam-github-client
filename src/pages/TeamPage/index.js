@@ -1,7 +1,10 @@
 import React from 'react';
-import { Card } from 'antd';
+import { Card, Typography, Tooltip } from 'antd';
+import { motion } from 'framer-motion';
+import { GithubOutlined, LinkedinOutlined, MailOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
+const { Title, Paragraph } = Typography;
 
 const teamMembers = [
   {
@@ -9,65 +12,117 @@ const teamMembers = [
     name: 'L E Chakrawarthy Sreenivas',
     role: 'President',
     bio: 'As the President of the Gitam GitHub Community, Chakrawarthy leads the team with a vision for growth and innovation. He is responsible for overseeing all activities, setting strategic goals, and ensuring that the community thrives. His leadership and dedication drive the success of our initiatives.',
-    photo: '/assets/President.jpeg'
+    photo: '/assets/President.jpeg',
+    github: 'https://github.com/chakrawarthy',
+    linkedin: 'https://linkedin.com/in/chakrawarthy',
+    email: 'chakrawarthy@example.com'
   },
   {
     id: 2,
     name: 'B Santosh',
     role: 'Vice President',
     bio: 'Santosh supports the President in managing the community and its operations. He plays a crucial role in coordinating between different teams, implementing strategic plans, and ensuring smooth execution of our projects. His proactive approach and problem-solving skills are invaluable to our success.',
-    photo: '/assets/VicePresident.jpg'
+    photo: '/assets/VicePresident.jpg',
+    github: 'https://github.com/santosh',
+    linkedin: 'https://linkedin.com/in/santosh',
+    email: 'santosh@example.com'
   },
   {
     id: 3,
     name: 'Deeksha Dakshayini',
     role: 'Secretary',
-    bio: 'Deeksha handles all internal communications and documentation for the Gitam GitHub Community. She ensures that all records are maintained accurately and that communications are clear and timely. Her organizational skills help keep the team aligned and informed.And responsible for the outlook of the club.',
-    photo: '/assets/Secretary.jpg'
+    bio: 'Deeksha handles all internal communications and documentation for the Gitam GitHub Community. She ensures that all records are maintained accurately and that communications are clear and timely. Her organizational skills help keep the team aligned and informed. She is also responsible for the outlook of the club.',
+    photo: '/assets/Secretary.jpg',
+    github: 'https://github.com/deeksha',
+    linkedin: 'https://linkedin.com/in/deeksha',
+    email: 'deeksha@example.com'
   },
   {
     id: 4,
-    name: 'Ram Sathya Sai',
-    role: 'Tech Lead',
-    bio: 'Ram is the Tech Lead responsible for guiding the technical team and managing the development of our projects. His expertise in technology and leadership ensures that our technical solutions are robust and innovative. Ram’s role is critical in driving the technical direction and solving complex challenges.',
-    photo: '/assets/TechLead.jpg'
+    name: "Ram",
+    role: "TechLead",
+    bio: "Santosh supports the President in managing the community and its operations. He plays a crucial role in coordinating between different teams, implementing strategic plans, and ensuring smooth execution of our projects. His proactive approach and problem-solving skills are invaluable to our success.",
+    photo: '/assets/Secretary.jpg',
+    github: "https://github.com/santosh",
+    linkedin: "https://linkedin.com/in/santosh",
+    email: "santosh@example.com"
   },
   {
     id: 5,
     name: 'Lakshmi Srjuana V',
     role: 'Inclusion Officer',
     bio: 'Lakshmi is dedicated to promoting inclusivity within the Gitam GitHub Community. She works to ensure diverse representation and foster an environment where all voices are heard. Her efforts help create a welcoming and supportive atmosphere for everyone involved.',
-    photo: '/assets/InclusionOfficer.jpg'
+    photo: '/assets/InclusionOfficer.jpg',
+    github: 'https://github.com/lakshmisrjuana',
+    linkedin: 'https://linkedin.com/in/lakshmisrjuana',
+    email: 'lakshmisrjuana@example.com'
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
 function TeamPage() {
   return (
-    <div className="p-10">
-      <h1 className="text-center text-2xl mb-10">Meet Our Team</h1>
-      <div className='grid md:grid-cols-3 gap-4'>
-        {teamMembers.map(member => (
-          <Card
-            hoverable
-            cover={
-              <div className="md:h-60 overflow-hidden rounded-lg flex items-center justify-center p-1">
-                <img alt={member.name} src={member.photo} />
-              </div>
-            }
-            className="rounded-lg shadow-md flex flex-col"
-          >
-            <Meta
-              title={member.name}
-              description={member.role}
-              className="mb-4"
-            />
-            <div className="flex-1 flex flex-col">
-              <p className="mt-4 text-justify overflow-hidden overflow-ellipsis flex-1">
-                {member.bio}
-              </p>
-            </div>
-          </Card>
-        ))}
+    <div className="bg-gray-100 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <Title level={1} className="text-center mb-12">Meet Our Exceptional Team</Title>
+        <Paragraph className="text-center text-lg mb-16">
+          Dedicated individuals driving innovation and collaboration in the Gitam GitHub Community.
+        </Paragraph>
+        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {teamMembers.map((member, index) => (
+            <motion.div
+              key={member.id}
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card
+                hoverable
+                cover={
+                  <div className="h-64 overflow-hidden rounded-t-lg">
+                    <img 
+                      alt={member.name} 
+                      src={member.photo} 
+                      className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
+                    />
+                  </div>
+                }
+                className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <Meta
+                  title={<Title level={3}>{member.name}</Title>}
+                  description={<Title level={4} type="secondary">{member.role}</Title>}
+                  className="mb-4"
+                />
+                <Paragraph className="text-sm text-gray-600 mb-4" ellipsis={{ rows: 3, expandable: true, symbol: 'Read more' }}>
+                  {member.bio}
+                </Paragraph>
+                <div className="flex justify-center space-x-4">
+                  <Tooltip title="GitHub">
+                    <a href={member.github} target="_blank" rel="noopener noreferrer">
+                      <GithubOutlined className="text-2xl text-gray-700 hover:text-blue-500 transition-colors" />
+                    </a>
+                  </Tooltip>
+                  <Tooltip title="LinkedIn">
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                      <LinkedinOutlined className="text-2xl text-gray-700 hover:text-blue-500 transition-colors" />
+                    </a>
+                  </Tooltip>
+                  <Tooltip title="Email">
+                    <a href={`mailto:${member.email}`}>
+                      <MailOutlined className="text-2xl text-gray-700 hover:text-blue-500 transition-colors" />
+                    </a>
+                  </Tooltip>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
