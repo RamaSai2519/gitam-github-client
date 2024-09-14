@@ -1,11 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Card, Rate, Divider, Modal } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import Confetti from 'react-confetti';
+import { Card, Col, Row, Typography, Input, Select, Tooltip, Button, Spin } from 'antd';
+import { SearchOutlined, FilterOutlined } from '@ant-design/icons';
+import { motion, AnimatePresence } from 'framer-motion';
 
-interface Testimonial {
+const { Meta } = Card;
+const { Title, Paragraph } = Typography;
+const { Search } = Input;
+const { Option } = Select;
+
+interface Resource {
   id: number;
   name: string;
   role: string;
@@ -14,7 +19,7 @@ interface Testimonial {
   detailedReview: string;
 }
 
-const testimonials: Testimonial[] = [
+const staticResources: Resource[] = [
   {
     id: 1,
     name: 'Sumayya',
@@ -89,96 +94,145 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const TestimonialPage: React.FC = () => {
-  const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
-  const [showConfetti, setShowConfetti] = useState(false);
+const cardStyle: React.CSSProperties = {
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column'
+};
 
-  const handleCardClick = (testimonial: Testimonial) => {
-    setSelectedTestimonial(testimonial);
-    setShowConfetti(true);
-  };
+const imageStyle: React.CSSProperties = {
+  height: '200px',
+  objectFit: 'cover'
+};
 
-  const handleCloseModal = () => {
-    setSelectedTestimonial(null);
-    setShowConfetti(false);
-  };
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1 }
+};
+
+interface ResourceCardProps {
+  resource: Resource;
+}
+
+const ResourceCard: React.FC<ResourceCardProps> = ({ resource }) => (
+  <motion.div variants={itemVariants}>
+    <Card
+      hoverable
+      style={cardStyle}
+      cover={<img alt={resource.title} src={resource.image} style={imageStyle} />}
+    >
+      <Meta
+        title={<a href={resource.link} target="_blank" rel="noopener noreferrer">{resource.title}</a>}
+        description={
+          <Tooltip title={resource.description}>
+            <Paragraph ellipsis={{ rows: 2 }}>{resource.description}</Paragraph>
+          </Tooltip>
+        }
+      />
+    </Card>
+  </motion.div>
+);
+
+const ResourcesPage: React.FC = () => {
+  const [resources, setResources] = useState<Resource[]>(staticResources);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [filterType, setFilterType] = useState<string>('all');
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (showConfetti) {
-      const timer = setTimeout(() => {
-        setShowConfetti(false);
-      }, 3000);
+    // Simulating API call
+    setLoading(true);
+    setTimeout(() => {
+      setResources(staticResources);
+      setLoading(false);
+    }, 1000);
+  }, []);
 
-      return () => clearTimeout(timer);
-    }
-  }, [showConfetti]);
+  const handleSearch = (value: string) => {
+    setSearchTerm(value);
+  };
+
+  const handleFilter = (value: string) => {
+    setFilterType(value);
+  };
+
+  const filteredResources = resources.filter((resource) => {
+    const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          resource.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = filterType === 'all' || resource.type === filterType;
+    return matchesSearch && matchesFilter;
+  });
 
   return (
-    <div className="relative p-8">
-      {showConfetti && (
-        <Confetti
-          className="absolute top-0 left-0 w-full h-full z-50"
-          recycle={false}
-          numberOfPieces={300}
+    <div className="p-8 bg-gradient-to-r from-blue-900 via-purple-900 to-indigo-900 min-h-screen">
+      <motion.div
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Title level={1} className="text-center mb-12 text-white">
+          Resources
+        </Title>
+      </motion.div>
+
+      <div className="mb-8 flex flex-wrap justify-center items-center gap-4">
+        <Search
+          placeholder="Search resources"
+          onSearch={handleSearch}
+          style={{ width: 300 }}
+          className="mb-4 sm:mb-0"
         />
+        <Select
+          defaultValue="all"
+          style={{ width: 200 }}
+          onChange={handleFilter}
+          className="mb-4 sm:mb-0"
+        >
+          <Option value="all">All Types</Option>
+          <Option value="documentation">Documentation</Option>
+          <Option value="video">Video</Option>
+          <Option value="blog">Blog</Option>
+        </Select>
+      </div>
+
+      {loading ? (
+        <div className="text-center">
+          <Spin size="large" />
+        </div>
+      ) : (
+        <AnimatePresence>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <Row gutter={[24, 24]}>
+              {filteredResources.map((resource) => (
+                <Col xs={24} sm={12} md={8} lg={6} key={resource.id}>
+                  <ResourceCard resource={resource} />
+                </Col>
+              ))}
+            </Row>
+          </motion.div>
+        </AnimatePresence>
       )}
 
-      <div className="flex justify-center items-center mb-4">
-        <h2 className="relative text-4xl font-bold text-center bg-gradient-to-r from-blue-500 to-yellow-500 bg-clip-text text-transparent">
-          Voices of Our Community!
-        </h2>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {testimonials.map((testimonial) => (
-          <Card
-            key={testimonial.id}
-            className="text-center transform transition-transform hover:scale-105 cursor-pointer"
-            bordered={false}
-            style={{
-              borderRadius: '15px',
-              boxShadow: '0 6px 12px rgba(0, 0, 0, 0.15)',
-              padding: '20px',
-            }}
-            onClick={() => handleCardClick(testimonial)}
-          >
-            <div className="mb-6">
-              <UserOutlined style={{ fontSize: '50px', color: '#1890ff' }} />
-            </div>
-            <h3 className="text-2xl font-semibold">{testimonial.name}</h3>
-            <p className="text-lg text-gray-500">{testimonial.role}</p>
-            <Divider />
-            <p className="text-base text-gray-700 mb-6">{testimonial.message}</p>
-            <Rate disabled value={testimonial.rating} />
-          </Card>
-        ))}
-      </div>
-
-      <Modal
-        open={!!selectedTestimonial}
-        footer={null}
-        onCancel={handleCloseModal}
-        centered
-        className="modal-glass-effect"
-        style={{ padding: '0' }}
-      >
-        <div className="p-8 text-center">
-          {selectedTestimonial && (
-            <div>
-              <div className="mb-6">
-                <UserOutlined style={{ fontSize: '50px', color: '#1890ff' }} />
-              </div>
-              <h3 className="text-2xl font-semibold">{selectedTestimonial.name}</h3>
-              <p className="text-lg text-gray-500">{selectedTestimonial.role}</p>
-              <Divider />
-              <p className="text-base text-gray-700 mb-6">{selectedTestimonial.detailedReview}</p>
-              <Rate disabled value={selectedTestimonial.rating} />
-            </div>
-          )}
+      {!loading && filteredResources.length === 0 && (
+        <div className="text-center text-white mt-8">
+          <Title level={3} className="text-white">No resources found</Title>
+          <Paragraph className="text-white">Try adjusting your search or filter criteria</Paragraph>
         </div>
-      </Modal>
+      )}
     </div>
   );
 };
 
-export default TestimonialPage;
+export default ResourcesPage;
