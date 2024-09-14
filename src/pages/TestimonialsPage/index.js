@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Rate, Divider, Modal } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { Card, Rate, Divider, Modal, Tooltip, Input, Select, Tag, Typography, Button, Slider } from 'antd';
+import { UserOutlined, LinkedinFilled, GithubFilled, SearchOutlined, FilterOutlined, StarOutlined } from '@ant-design/icons';
 import Confetti from 'react-confetti';
-import './TestimonialsPage.css'; 
+import { motion, AnimatePresence } from 'framer-motion';
+
+const { Title, Paragraph, Text } = Typography;
+const { Search } = Input;
+const { Option } = Select;
 
 const testimonials = [
   {
@@ -79,100 +83,204 @@ const testimonials = [
   },
 ];
 
-function TestimonialPage() {
+const TestimonialPage = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterRole, setFilterRole] = useState('All');
+  const [minRating, setMinRating] = useState(0);
+  const [sortBy, setSortBy] = useState('default');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
-  const handleCardClick = (testimonial) => {
+  const handleCardClick = useCallback((testimonial) => {
     setSelectedTestimonial(testimonial);
     setShowConfetti(true);
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setSelectedTestimonial(null);
     setShowConfetti(false);
-  };
+  }, []);
+
+  const filteredAndSortedTestimonials = useMemo(() => {
+    return testimonials
+      .filter(
+        (testimonial) =>
+          testimonial.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          testimonial.role.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      .filter((testimonial) => filterRole === 'All' || testimonial.role === filterRole)
+      .filter((testimonial) => testimonial.rating >= minRating)
+      .sort((a, b) => {
+        if (sortBy === 'rating') return b.rating - a.rating;
+        if (sortBy === 'name') return a.name.localeCompare(b.name);
+        return 0;
+      });
+  }, [searchTerm, filterRole, minRating, sortBy]);
+
+  const paginatedTestimonials = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    return filteredAndSortedTestimonials.slice(startIndex, startIndex + itemsPerPage);
+  }, [filteredAndSortedTestimonials, currentPage]);
+
+  const pageCount = Math.ceil(filteredAndSortedTestimonials.length / itemsPerPage);
+
+  const roles = useMemo(() => ['All', ...new Set(testimonials.map((t) => t.role))], []);
 
   useEffect(() => {
     if (showConfetti) {
-      const timer = setTimeout(() => {
-        setShowConfetti(false);
-      }, 3000); 
-
-      return () => clearTimeout(timer); 
+      const timer = setTimeout(() => setShowConfetti(false), 3000);
+      return () => clearTimeout(timer);
     }
   }, [showConfetti]);
 
-  return (
-    <div className="relative p-8">
-      {/* Confetti Effect */}
-      {showConfetti && (
-        <Confetti
-          className="absolute top-0 left-0 w-full h-full z-50"
-          recycle={false}
-          numberOfPieces={300}
-        />
-      )}
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
-      {/* Heading */}
-      <div className="heading-container">
-        <h2 className="heading-effect">
-        Voices of Our Community.!
-        </h2>
+  return (
+    <div className="p-8 bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen">
+      {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
+
+      <motion.div
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Title level={1} className="text-center mb-8 text-4xl font-bold text-blue-800">
+          Voices of Our Community
+        </Title>
+      </motion.div>
+
+      <div className="mb-8 flex flex-wrap justify-center items-center gap-4">
+        <Search
+          placeholder="Search testimonials"
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{ width: 250 }}
+          prefix={<SearchOutlined />}
+        />
+        <Select
+          style={{ width: 200 }}
+          placeholder="Filter by role"
+          onChange={setFilterRole}
+          defaultValue="All"
+        >
+          {roles.map((role) => (
+            <Option key={role} value={role}>{role}</Option>
+          ))}
+        </Select>
+        <div className="flex items-center">
+          <Text className="mr-2">Min Rating:</Text>
+          <Slider
+            min={0}
+            max={5}
+            step={0.5}
+            value={minRating}
+            onChange={setMinRating}
+            style={{ width: 150 }}
+          />
+        </div>
+        <Select
+          style={{ width: 150 }}
+          placeholder="Sort by"
+          onChange={setSortBy}
+          defaultValue="default"
+        >
+          <Option value="default">Default</Option>
+          <Option value="rating">Rating</Option>
+          <Option value="name">Name</Option>
+        </Select>
       </div>
 
-      {/* Testimonials Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {testimonials.map((testimonial) => (
-          <Card
-            key={testimonial.id}
-            className="text-center transform transition-transform hover:scale-105 cursor-pointer"
-            bordered={false}
-            style={{
-              borderRadius: '15px',
-              boxShadow: '0 6px 12px rgba(0, 0, 0, 0.15)',
-              padding: '20px',
-            }}
-            onClick={() => handleCardClick(testimonial)}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        initial="hidden"
+        animate="visible"
+        variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+      >
+        {paginatedTestimonials.map((testimonial) => (
+          <motion.div key={testimonial.id} variants={cardVariants}>
+            <Card
+              hoverable
+              className="h-full flex flex-col justify-between bg-white bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={() => handleCardClick(testimonial)}
+            >
+              <div>
+                <div className="flex items-center mb-4">
+                  <UserOutlined className="text-4xl text-blue-500 mr-4" />
+                  <div>
+                    <Title level={4} className="mb-0">{testimonial.name}</Title>
+                    <Text type="secondary">{testimonial.role}</Text>
+                  </div>
+                </div>
+                <Paragraph ellipsis={{ rows: 3 }}>{testimonial.message}</Paragraph>
+              </div>
+              <div className="mt-4">
+                <Divider className="my-2" />
+                <div className="flex justify-between items-center">
+                  <Rate disabled defaultValue={testimonial.rating} />
+                  <Tag color="blue">{testimonial.role}</Tag>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      <div className="flex justify-center mt-8">
+        {Array.from({ length: pageCount }, (_, i) => (
+          <Button
+            key={i}
+            type={currentPage === i + 1 ? 'primary' : 'default'}
+            onClick={() => setCurrentPage(i + 1)}
+            className="mx-1"
           >
-            <div className="mb-6">
-              <UserOutlined style={{ fontSize: '50px', color: '#1890ff' }} />
-            </div>
-            <h3 className="text-2xl font-semibold">{testimonial.name}</h3>
-            <p className="text-lg text-gray-500">{testimonial.role}</p>
-            <Divider />
-            <p className="text-base text-gray-700 mb-6">{testimonial.message}</p>
-            <Rate disabled value={testimonial.rating} />
-          </Card>
+            {i + 1}
+          </Button>
         ))}
       </div>
 
-      {/* Detailed Review Modal */}
-      <Modal
-        open={!!selectedTestimonial}
-        footer={null}
-        onCancel={handleCloseModal}
-        centered
-        className="modal-glass-effect"
-        style={{ padding: '0' }}
-      >
-        <div className="p-8 text-center">
-          {selectedTestimonial && (
-            <div>
-              <div className="mb-6">
-                <UserOutlined style={{ fontSize: '50px', color: '#1890ff' }} />
+      <AnimatePresence>
+        {selectedTestimonial && (
+          <Modal
+            visible={!!selectedTestimonial}
+            onCancel={handleCloseModal}
+            footer={null}
+            width={600}
+            centered
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="text-center">
+                <UserOutlined className="text-6xl text-blue-500 mb-4" />
+                <Title level={2}>{selectedTestimonial.name}</Title>
+                <Text type="secondary" className="text-lg mb-4 block">{selectedTestimonial.role}</Text>
+                <Paragraph className="text-lg mb-6">{selectedTestimonial.detailedReview}</Paragraph>
+                <div className="flex justify-center items-center">
+                  <StarOutlined className="text-yellow-500 text-2xl mr-2" />
+                  <span className="text-3xl font-bold">{selectedTestimonial.rating.toFixed(1)}</span>
+                </div>
+                <div className="mt-6 flex justify-center space-x-4">
+                  <Tooltip title="LinkedIn Profile">
+                    <Button icon={<LinkedinFilled />} shape="circle" />
+                  </Tooltip>
+                  <Tooltip title="GitHub Profile">
+                    <Button icon={<GithubFilled />} shape="circle" />
+                  </Tooltip>
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold">{selectedTestimonial.name}</h3>
-              <p className="text-lg text-gray-500">{selectedTestimonial.role}</p>
-              <Divider />
-              <p className="text-base text-gray-700 mb-6">{selectedTestimonial.detailedReview}</p>
-              <Rate disabled value={selectedTestimonial.rating} />
-            </div>
-          )}
-        </div>
-      </Modal>
+            </motion.div>
+          </Modal>
+        )}
+      </AnimatePresence>
     </div>
   );
-}
+};
 
 export default TestimonialPage;
