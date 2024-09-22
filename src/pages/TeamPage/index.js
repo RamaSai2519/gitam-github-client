@@ -39,13 +39,13 @@ const teamMembers = [
   },
   {
     id: 4,
-    name: "Ram",
-    role: "TechLead",
-    bio: "Santosh supports the President in managing the community and its operations. He plays a crucial role in coordinating between different teams, implementing strategic plans, and ensuring smooth execution of our projects. His proactive approach and problem-solving skills are invaluable to our success.",
-    photo: '/assets/Secretary.jpg',
-    github: "https://github.com/santosh",
-    linkedin: "https://linkedin.com/in/santosh",
-    email: "santosh@example.com"
+    name: "Rama Sathya Sai",
+    role: "Tech Lead",
+    bio: "Rama is responsible for overseeing the technical aspects of the Gitam GitHub Community. He leads the development of projects, manages technical resources, and ensures that our initiatives are implemented successfully. His expertise and guidance are instrumental in driving innovation and excellence within the community.",
+    photo: '/assets/TechLead.jpg',
+    github: "https://github.com/ramasai2519",
+    linkedin: "https://www.linkedin.com/in/rama-sathya-sai-82140a293/",
+    email: "rchandik@gitam.in"
   },
   {
     id: 5,
@@ -85,9 +85,9 @@ function TeamPage() {
                 hoverable
                 cover={
                   <div className="h-64 overflow-hidden rounded-t-lg">
-                    <img 
-                      alt={member.name} 
-                      src={member.photo} 
+                    <img
+                      alt={member.name}
+                      src={member.photo}
                       className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
                     />
                   </div>
