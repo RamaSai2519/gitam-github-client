@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios'; // Make sure axios is installed
+
+// Mock data
+const mockQuotes = [
+  { id: 1, text: "Open source is changing the world.", author: "John Doe", title: "Developer" },
+  { id: 2, text: "Collaboration is the key to innovation.", author: "Jane Smith", title: "Project Manager" },
+  { id: 3, text: "GitHub has revolutionized software development.", author: "Bob Johnson", title: "CTO" },
+];
 
 export const useFetchQuotes = () => {
     const [quotes, setQuotes] = useState([]);
@@ -7,17 +13,12 @@ export const useFetchQuotes = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchQuotes = async () => {
-            try {
-                // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-                const response = await axios.get('YOUR_API_ENDPOINT');
-                setQuotes(response.data);
+       
+        const fetchQuotes = () => {
+            setTimeout(() => {
+                setQuotes(mockQuotes);
                 setIsLoading(false);
-            } catch (err) {
-                console.error(err);
-                setError(err);
-                setIsLoading(false);
-            }
+            }, 1000); 
         };
 
         fetchQuotes();

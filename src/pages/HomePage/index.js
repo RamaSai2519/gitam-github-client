@@ -1,12 +1,9 @@
 import React, { useCallback } from 'react';
 import { Typography } from 'antd';
 import { Helmet } from 'react-helmet';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate hook
-import ResourcesPage from '../ResourcesPage';
-import ProjectPage from '../ProjectPage';
-import TeamPage from '../TeamPage';
-import { useFetchQuotes } from 'hooks/useFetchQuotes';
+import { useFetchQuotes } from '../../hooks/seFetchQuotes';
 import HeroSection from '../../components/HeroSection';
+import { useNavigate } from 'react-router-dom';
 import FeaturesSection from '../../components/FeaturesSection';
 import SuccessStoriesSection from '../../components/SuccessStoriesSection';
 import CallToActionSection from '../../components/CallToActionSection';
@@ -17,31 +14,14 @@ const { Title } = Typography;
 
 const HomePage = () => {
     const { quotes, isLoading, error } = useFetchQuotes();
-    const navigate = useNavigate();  // Initialize useNavigate hook
+    const navigate = useNavigate();
 
     const handleExploreClick = useCallback(() => {
-        // Navigate to the resources page
         navigate('/resources');
-        
-        // Optionally, you could also scroll to a specific section
-        // window.scrollTo({ top: document.getElementById('resources-section').offsetTop, behavior: 'smooth' });
-        
-        // Or trigger an analytics event
-        // analytics.track('Explore Resources Clicked');
     }, [navigate]);
 
     const handleContactClick = useCallback(() => {
-        // Navigate to the contact page
         navigate('/contact');
-        
-        // Alternatively, you could open a modal
-        // setIsContactModalOpen(true);
-        
-        // Or scroll to a contact form on the same page
-        // document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
-        
-        // Or trigger an analytics event
-        // analytics.track('Contact Button Clicked');
     }, [navigate]);
 
     return (
@@ -69,13 +49,9 @@ const HomePage = () => {
 
             <CallToActionSection onContactClick={handleContactClick} />
 
-            <ResourcesPage />
-            <ProjectPage />
-            <TeamPage />
-
             <GitHubSection />
         </div>
     );
 };
 
-export default React.memo(HomePage);
+export default HomePage;

@@ -225,14 +225,23 @@ const ProjectPage = () => {
 
   const renderCardImage = (project) => {
     return (
-      <div className='h-48 bg-gradient-to-r from-blue to-purple-600'>
-        <div className='w-full h-full flex items-center justify-center p-4'>
-          <h3 className='md:text-3xl text-2xl font-bold text-center text-white'>{project.title}</h3>
+      <div className="relative h-48 overflow-hidden group">
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 transition-all duration-300 ease-in-out group-hover:from-gray-200 group-hover:to-gray-300">
+          <div className="absolute inset-0 flex items-center justify-center p-4">
+            <h3 className="text-2xl font-semibold text-gray-800 text-center transition-all duration-300 group-hover:scale-105">
+              {project.title}
+            </h3>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></div>
+        <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span className="bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-full">
+            {project.category}
+          </span>
         </div>
       </div>
     );
   };
-
   const renderProjectCard = (project, isOurProject = false) => (
     <motion.div key={project.id} variants={cardVariants}>
       <Card
