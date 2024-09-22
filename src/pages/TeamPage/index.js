@@ -13,9 +13,9 @@ const teamMembers = [
     role: 'President',
     bio: 'As the President of the Gitam GitHub Community, Chakrawarthy leads the team with a vision for growth and innovation. He is responsible for overseeing all activities, setting strategic goals, and ensuring that the community thrives. His leadership and dedication drive the success of our initiatives.',
     photo: '/assets/President.jpeg',
-    github: 'https://github.com/chakrawarthy',
-    linkedin: 'https://linkedin.com/in/chakrawarthy',
-    email: 'chakrawarthy@example.com'
+    github: 'https://github.com/lechakrawarthy',
+    linkedin: 'https://linkedin.com/in/lechakrawarthy',
+    email: 'chakravarthi1597@gmail.com'
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const teamMembers = [
     photo: '/assets/VicePresident.jpg',
     github: 'https://github.com/santosh',
     linkedin: 'https://linkedin.com/in/santosh',
-    email: 'santosh@example.com'
+    email: 'sbandla2@gitam.in'
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const teamMembers = [
     photo: '/assets/Secretary.jpg',
     github: 'https://github.com/deeksha',
     linkedin: 'https://linkedin.com/in/deeksha',
-    email: 'deeksha@example.com'
+    email: 'dorugant2@gitam.in'
   },
   {
     id: 4,
